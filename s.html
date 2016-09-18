@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>My App</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="css/framework7.ios.min.css">
+    <link rel="stylesheet" href="css/framework7.ios.colors.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Status bar overlay for fullscreen mode-->
+<div class="statusbar-overlay"></div>
+
+<!-- Panels overlay-->
+<div class="panel-overlay"></div>
+<!-- Left panel with reveal effect-->
+<div class="panel panel-left panel-reveal">
+    <div class="content-block-title">账户情况</div>
+    <div class="list-block">
+        <ul>
+            <li class="item-content">
+                <div class="item-inner">
+                    <div class="item-title">总资产:￥5025010</div>
+                </div>
+            </li>
+            <li class="item-content">
+                <div class="item-inner">
+                    <div class="item-title">当日盈亏:￥25010</div>
+                </div>
+            </li>
+            <li class="item-content">
+                <div class="item-inner">
+                    <div class="item-title">浮动盈亏:￥25010</div>
+                </div>
+            </li>
+            <li class="item-content">
+                <div class="item-inner">
+                    <div class="item-title">占用保证金:￥1065600</div>
+                </div>
+            </li>
+            <li class="item-content">
+                <div class="item-inner">
+                    <div class="item-title">占用保证金比例:21.23%</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+
+<!-- Views-->
+<div class="views">
+    <!-- Your main view, should have "view-main" class-->
+    <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar">
+            <div class="navbar-inner">
+                <!-- We have home navbar without left link-->
+                <div class="center sliding">AlphaSeeker</div>
+                <div class="right">
+                    <!-- Right link contains only icon - additional "icon-only" class--><a href="#" class="link icon-only open-panel"> <i class="icon icon-bars"></i></a>
+                </div>
+            </div>
+        </div>
+        <!-- Pages, because we need fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+            <!-- Page, data-page contains page name-->
+            <div data-page="index" class="page">
+                <form class="searchbar">
+                    <div class="searchbar-input">
+                        <input type="search" placeholder="Search">
+                        <a href="#" class="searchbar-clear"></a>
+                    </div>
+                    <a href="#" class="searchbar-cancel">Cancel</a>
+                </form>
+                <!-- Scrollable page content-->
+                <div class="page-content">
+
+                    <!--index nav btn-->
+                    <div class="content-block index-btn-wrapper">
+                        <div class="row">
+                            <!-- Each "cell" has col-[widht in percents] class -->
+                            <div class="col-25">
+                                <div class="index-img-wrapper">
+                                    <img src="img/increasing-stocks-graphic-of-bars.png" width="40">
+                                </div>
+                                <a href="about.html">大盘指数</a>
+                            </div>
+                            <div class="col-25">
+                                <div class="index-img-wrapper">
+                                    <img src="img/antivirus.png" width="40">
+                                </div>
+                                <h5>风险控制</h5>
+                            </div>
+                            <div class="col-25">
+                                <div class="index-img-wrapper">
+                                    <img src="img/blackboard.png" width="40">
+                                </div>
+                                <h5>期货学堂</h5>
+                            </div>
+                            <div class="col-25">
+                                <div class="index-img-wrapper">
+                                    <img src="img/interface.png" width="40">
+                                </div>
+                                <h5>期货论坛</h5>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--data panel-->
+                    <div class="content-block-title">数据中心</div>
+                    <div class="content-block index-data-wrapper">
+                        <div class="row">
+                            <div class="col-33">
+                                <h5>上证指数</h5>
+                                <h3 style="color: #2d882d">3002.64</h3>
+                                <h6 style="color: #2d882d"><span>-16.10</span><span>-0.53%</span></h6>
+                            </div>
+                            <div class="col-33">
+                                <h5>上证指数</h5>
+                                <h3 style="color: #2d882d">3002.64</h3>
+                                <h6 style="color: #2d882d"><span>-16.10</span><span>-0.53%</span></h6>
+                            </div>
+                            <div class="col-33">
+                                <h5>上证指数</h5>
+                                <h3 style="color: #d4211c">3002.64</h3>
+                                <h6 style="color: #d4211c"><span>-16.10</span><span>-0.53%</span></h6>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--news panel-->
+                    <div class="content-block-title">新闻中心</div>
+                    <div class="list-block media-list">
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><img src="img/daily-newspaper-.png" width="44"></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">Yellow Submarine</div>
+                                        </div>
+                                        <div class="item-subtitle">Beatles</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><img src="img/daily-newspaper-.png" width="44"></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">Yellow Submarine</div>
+                                        </div>
+                                        <div class="item-subtitle">Beatles</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><img src="img/daily-newspaper-.png" width="44"></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">Yellow Submarine</div>
+                                        </div>
+                                        <div class="item-subtitle">Beatles</div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-media"><img src="img/daily-newspaper-.png" width="44"></div>
+                                    <div class="item-inner">
+                                        <div class="item-title-row">
+                                            <div class="item-title">Yellow Submarine</div>
+                                        </div>
+                                        <div class="item-subtitle">Beatles</div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Bottom Toolbar-->
+    <div class="toolbar tabbar tabbar-labels">
+        <div class="toolbar-inner">
+            <a href="#tab1" class="tab-link active">
+                <i class="icon demo-icon-1"></i>
+                <span class="tabbar-label">首页</span>
+            </a>
+            <a href="about.html" class="tab-link">
+                <i class="icon demo-icon-2"></i>
+                <span class="tabbar-label">资讯</span>
+            </a>
+            <a href="form.html" class="tab-link">
+                <i class="icon demo-icon-3"></i>
+                <span class="tabbar-label">行情</span>
+            </a>
+            <a href="#tab4" class="tab-link">
+                <i class="icon demo-icon-4"></i>
+                <span class="tabbar-label">设置</span>
+            </a>
+            <a href="#tab4" class="tab-link">
+                <i class="icon demo-icon-4"></i>
+                <span class="tabbar-label">账户</span>
+            </a>
+
+        </div>
+    </div>
+</div>
+</div>
+<!-- Path to Framework7 Library JS-->
+<script type="text/javascript" src="js/framework7.min.js"></script>
+<!-- Path to your app js-->
+<script type="text/javascript" src="js/my-app.js"></script>
+</body>
+</html>
