@@ -1,0 +1,26 @@
+.loginbox-component {
+
+}
+.login-box-text-field-wrapper {
+  width: 70%;
+  margin: 50px auto;
+}
+.login-box-text-field {
+  margin-top: 30px;
+}
+.login-box-login-btn {
+  margin-top: 30px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+.login-box-register-btn {
+  width: 100%;
+}
+.footer {
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom:30px;
+  color: #aaaaaa;
+  font-size: 0.9rem;
+}
