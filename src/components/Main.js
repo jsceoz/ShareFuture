@@ -3,7 +3,7 @@ require('styles/App.css');
 
 import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
-import AP from './account/AccountPageComponent'
+import AP from './home/HomePageComponent'
 
 let yeomanImage = require('../images/yeoman.png');
 

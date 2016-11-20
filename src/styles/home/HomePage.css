@@ -1,0 +1,24 @@
+.homepage-component {
+
+}
+.homepage-header-icon-wrapper {
+  height: 100px;
+  width: 100%;
+  background: #aaaaaa;
+}
+.homepage-header-icon {
+  float: left;
+  box-sizing: border-box;
+  width: 25%;
+}
+.homepage-data {
+  padding-left: 30px;
+  height: 40px;
+  line-height: 40px;
+}
+.homepage-data span {
+  margin-right: 20px;
+}
+.homepage-data span:first-child {
+  margin-right: 40px;
+}

@@ -14,9 +14,9 @@ var _MuiThemeProvider = require('material-ui/styles/MuiThemeProvider');
 
 var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
 
-var _AccountPageComponent = require('./account/AccountPageComponent');
+var _HomePageComponent = require('./home/HomePageComponent');
 
-var _AccountPageComponent2 = _interopRequireDefault(_AccountPageComponent);
+var _HomePageComponent2 = _interopRequireDefault(_HomePageComponent);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -49,7 +49,7 @@ var AppComponent = function (_React$Component) {
         _react2.default.createElement(
           'div',
           { className: 'index' },
-          _react2.default.createElement(_AccountPageComponent2.default, null)
+          _react2.default.createElement(_HomePageComponent2.default, null)
         )
       );
     }

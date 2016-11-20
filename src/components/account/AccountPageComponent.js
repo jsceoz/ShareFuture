@@ -5,8 +5,11 @@ import Menu from 'material-ui/Menu'
 import MenuItem from 'material-ui/MenuItem'
 import Paper from 'material-ui/Paper'
 import AppBar from 'material-ui/AppBar'
+import Delete from 'material-ui/svg-icons/action/delete';
+import Footer from '../public/FooterComponent'
 
 require('styles/account/AccountPage.css');
+
 
 class AccountPageComponent extends React.Component {
   render() {
@@ -18,7 +21,7 @@ class AccountPageComponent extends React.Component {
         />
         <Paper className="account-header-info-wrapper">
           <div className="account-header-list">
-            <li>总资产<strong>111</strong></li>
+            <li>总资产<p>111</p></li>
             <li>可用保证金</li>
             <li>可用保证金比率</li>
           </div>
@@ -30,12 +33,13 @@ class AccountPageComponent extends React.Component {
         </Paper>
         <Paper className="paper-menu">
           <Menu>
-            <MenuItem primaryText="委托/撤单" />
-            <MenuItem primaryText="成交记录" />
-            <MenuItem primaryText="资产分析" />
-            <MenuItem primaryText="账户充值" />
+            <MenuItem primaryText="委托/撤单" leftIcon={<Delete/>} />
+            <MenuItem primaryText="成交记录" leftIcon={<Delete/>} />
+            <MenuItem primaryText="资产分析" leftIcon={<Delete/>}/>
+            <MenuItem primaryText="账户充值" leftIcon={<Delete/>}/>
           </Menu>
         </Paper>
+        <Footer index={3} />
       </div>
     );
   }

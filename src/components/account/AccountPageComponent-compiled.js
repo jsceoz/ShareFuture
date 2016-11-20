@@ -26,6 +26,14 @@ var _AppBar = require('material-ui/AppBar');
 
 var _AppBar2 = _interopRequireDefault(_AppBar);
 
+var _delete = require('material-ui/svg-icons/action/delete');
+
+var _delete2 = _interopRequireDefault(_delete);
+
+var _FooterComponent = require('../public/FooterComponent');
+
+var _FooterComponent2 = _interopRequireDefault(_FooterComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -66,7 +74,7 @@ var AccountPageComponent = function (_React$Component) {
               null,
               '\u603B\u8D44\u4EA7',
               _react2.default.createElement(
-                'strong',
+                'p',
                 null,
                 '111'
               )
@@ -108,12 +116,13 @@ var AccountPageComponent = function (_React$Component) {
           _react2.default.createElement(
             _Menu2.default,
             null,
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u59D4\u6258/\u64A4\u5355' }),
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u6210\u4EA4\u8BB0\u5F55' }),
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D44\u4EA7\u5206\u6790' }),
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D26\u6237\u5145\u503C' })
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u59D4\u6258/\u64A4\u5355', leftIcon: _react2.default.createElement(_delete2.default, null) }),
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u6210\u4EA4\u8BB0\u5F55', leftIcon: _react2.default.createElement(_delete2.default, null) }),
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D44\u4EA7\u5206\u6790', leftIcon: _react2.default.createElement(_delete2.default, null) }),
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D26\u6237\u5145\u503C', leftIcon: _react2.default.createElement(_delete2.default, null) })
           )
-        )
+        ),
+        _react2.default.createElement(_FooterComponent2.default, { index: 3 })
       );
     }
   }]);
