@@ -4,11 +4,45 @@ import React from 'react';
 import AppBar from 'material-ui/AppBar'
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
-import Footer from '../public/FooterComponent'
+import Footer from '../public/FooterComponent';
+import IconButton from 'material-ui/IconButton';
+import IconTimeline from 'material-ui/svg-icons/action/timeline'
+import IconRP from 'material-ui/svg-icons/action/verified-user'
+import IconSchool from 'material-ui/svg-icons/action/store'
+import IconBBS from 'material-ui/svg-icons/action/toc'
+import $ from 'jquery'
 
 require('styles/home/HomePage.css');
 
+const style = {
+  width: 40,
+  height: 40,
+};
+
 class HomePageComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dataIndex: 0,
+      dataList: [],
+      newsList:[]
+    }
+  }
+
+  componentDidMount() {
+    let self = this;
+    $.ajax({
+      method:"GET",
+      url:"http://121.201.68.143/news/get_part/?n=1&k=5"
+    }).done(function (data) {
+      console.log(data);
+      self.setState({
+        newsList:data
+      })
+    })
+
+  }
+
   render() {
     return (
       <div className="homepage-component">
@@ -18,17 +52,31 @@ class HomePageComponent extends React.Component {
         />
         <div className="homepage-header-icon-wrapper">
           <div className="homepage-header-icon">
-            期指预测
+            <IconButton className="homepage-icon-btn" iconStyle={style}>
+              <IconTimeline />
+            </IconButton>
           </div>
           <div className="homepage-header-icon">
-            期指预测
+            <IconButton className="homepage-icon-btn" iconStyle={style}>
+              <IconRP />
+            </IconButton>
           </div>
           <div className="homepage-header-icon">
-            期指预测
+            <IconButton className="homepage-icon-btn" iconStyle={style}>
+              <IconSchool />
+            </IconButton>
           </div>
           <div className="homepage-header-icon">
-            期指预测
+            <IconButton className="homepage-icon-btn" iconStyle={style}>
+              <IconBBS />
+            </IconButton>
           </div>
+        </div>
+        <div className="homepage-header-p-wrapper">
+          <span>期指预测</span>
+          <span>风险控制</span>
+          <span>期货学堂</span>
+          <span>期货论坛</span>
         </div>
         <div className="homepage-data-wrapper">
           <Subheader>数据中心</Subheader>
@@ -41,18 +89,11 @@ class HomePageComponent extends React.Component {
         </div>
         <List className="homepage-news-list-wrapper">
           <Subheader>新闻中心</Subheader>
-          <ListItem
-            primaryText="新闻新闻新闻"
-          />
-          <ListItem
-            primaryText="新闻新闻新闻"
-          />
-          <ListItem
-            primaryText="新闻新闻新闻"
-          />
-          <ListItem
-            primaryText="新闻新闻新闻"
-          />
+          {this.state.newsList.map((news) => (
+            <ListItem
+              primaryText={news.title}
+            />
+          ))}
         </List>
         <Footer index={0}/>
       </div>
