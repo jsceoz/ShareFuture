@@ -24,6 +24,10 @@ var _FooterComponent = require('../public/FooterComponent');
 
 var _FooterComponent2 = _interopRequireDefault(_FooterComponent);
 
+var _Divider = require('material-ui/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
 var _IconButton = require('material-ui/IconButton');
 
 var _IconButton2 = _interopRequireDefault(_IconButton);
@@ -94,8 +98,15 @@ var HomePageComponent = function (_React$Component) {
       });
     }
   }, {
+    key: 'toNewsDetail',
+    value: function toNewsDetail(id) {
+      window.location.href = "#/news/detail/" + id;
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(
         'div',
         { className: 'homepage-component' },
@@ -111,7 +122,9 @@ var HomePageComponent = function (_React$Component) {
             { className: 'homepage-header-icon' },
             _react2.default.createElement(
               _IconButton2.default,
-              { className: 'homepage-icon-btn', iconStyle: style },
+              { className: 'homepage-icon-btn', iconStyle: style, onClick: function onClick() {
+                  return window.location.href = "#/price/";
+                } },
               _react2.default.createElement(_timeline2.default, null)
             )
           ),
@@ -120,7 +133,9 @@ var HomePageComponent = function (_React$Component) {
             { className: 'homepage-header-icon' },
             _react2.default.createElement(
               _IconButton2.default,
-              { className: 'homepage-icon-btn', iconStyle: style },
+              { className: 'homepage-icon-btn', iconStyle: style, onClick: function onClick() {
+                  return window.location.href = "#/setting/";
+                } },
               _react2.default.createElement(_verifiedUser2.default, null)
             )
           ),
@@ -129,7 +144,9 @@ var HomePageComponent = function (_React$Component) {
             { className: 'homepage-header-icon' },
             _react2.default.createElement(
               _IconButton2.default,
-              { className: 'homepage-icon-btn', iconStyle: style },
+              { className: 'homepage-icon-btn', iconStyle: style, onClick: function onClick() {
+                  return window.location.href = "#/school/";
+                } },
               _react2.default.createElement(_store2.default, null)
             )
           ),
@@ -138,7 +155,9 @@ var HomePageComponent = function (_React$Component) {
             { className: 'homepage-header-icon' },
             _react2.default.createElement(
               _IconButton2.default,
-              { className: 'homepage-icon-btn', iconStyle: style },
+              { className: 'homepage-icon-btn', iconStyle: style, onClick: function onClick() {
+                  return window.location.href = "#/bbs/";
+                } },
               _react2.default.createElement(_toc2.default, null)
             )
           )
@@ -209,9 +228,17 @@ var HomePageComponent = function (_React$Component) {
             '\u65B0\u95FB\u4E2D\u5FC3'
           ),
           this.state.newsList.map(function (news) {
-            return _react2.default.createElement(_List.ListItem, {
-              primaryText: news.title
-            });
+            return _react2.default.createElement(
+              'div',
+              null,
+              _react2.default.createElement(_List.ListItem, {
+                primaryText: news.title,
+                onClick: function onClick() {
+                  return _this2.toNewsDetail(news.id);
+                }
+              }),
+              _react2.default.createElement(_Divider2.default, null)
+            );
           })
         ),
         _react2.default.createElement(_FooterComponent2.default, { index: 0 })

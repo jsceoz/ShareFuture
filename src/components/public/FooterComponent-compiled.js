@@ -57,16 +57,16 @@ var BottomNavigationExampleSimple = function (_Component) {
       this.setState({ selectedIndex: index });
       switch (index) {
         case 0:
-          window.location.href = "#/map";
+          window.location.href = "#/home";
           break;
         case 1:
-          window.location.href = "#/message/";
+          window.location.href = "#/news/";
           break;
         case 2:
-          window.location.href = "#/friend";
+          window.location.href = "#/price";
           break;
         case 3:
-          window.location.href = "#/mine";
+          window.location.href = "#/account";
       }
     }
   }, {

@@ -26,6 +26,14 @@ var _RaisedButton = require('material-ui/RaisedButton');
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
+var _Snackbar = require('material-ui/Snackbar');
+
+var _Snackbar2 = _interopRequireDefault(_Snackbar);
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -39,13 +47,85 @@ require('styles/login/LoginBox.css');
 var LoginBoxComponent = function (_React$Component) {
   _inherits(LoginBoxComponent, _React$Component);
 
-  function LoginBoxComponent() {
+  function LoginBoxComponent(props) {
     _classCallCheck(this, LoginBoxComponent);
 
-    return _possibleConstructorReturn(this, (LoginBoxComponent.__proto__ || Object.getPrototypeOf(LoginBoxComponent)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (LoginBoxComponent.__proto__ || Object.getPrototypeOf(LoginBoxComponent)).call(this, props));
+
+    _this.state = {
+      username: "",
+      password: "",
+      open: false,
+      msg: ""
+    };
+    return _this;
   }
 
   _createClass(LoginBoxComponent, [{
+    key: 'handleUsernameChange',
+    value: function handleUsernameChange(e) {
+      this.setState({
+        username: e.target.value
+      });
+    }
+  }, {
+    key: 'handlePasswordChange',
+    value: function handlePasswordChange(e) {
+      this.setState({
+        password: e.target.value
+      });
+    }
+  }, {
+    key: 'login',
+    value: function login() {
+      var self = this;
+      _jquery2.default.ajax({
+        method: "POST",
+        url: "http://121.201.68.143/customer/login/",
+        data: {
+          uname: this.state.username,
+          pwd: this.state.password
+        }
+      }).done(function (data) {
+        console.log(data);
+        if (data.token == "NULL") {
+          self.setState({
+            open: true,
+            msg: "登录失败"
+          });
+        } else {
+          self.setState({
+            open: true,
+            msg: "登录成功"
+          });
+          (0, _jquery2.default)("#app").attr('data-token', data.token);
+          (0, _jquery2.default)("#app").attr('data-username', self.state.username);
+          setTimeout("window.location.href='#/home'", 1000);
+        }
+      });
+    }
+  }, {
+    key: 'register',
+    value: function register() {
+      var self = this;
+      _jquery2.default.ajax({
+        method: "POST",
+        url: "http://121.201.68.143/customer/register/",
+        data: {
+          uname: this.state.username,
+          pwd: this.state.password
+        }
+      }).done(function (data) {
+        console.log(data);
+        if (data.state == 200) {
+          self.setState({
+            open: true,
+            msg: "注册成功,请点击登录"
+          });
+        }
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -60,12 +140,16 @@ var LoginBoxComponent = function (_React$Component) {
           { className: 'login-box-text-field-wrapper' },
           _react2.default.createElement(_TextField2.default, {
             className: 'login-box-text-field',
-            hintText: '\u7528\u6237\u540D'
+            hintText: '\u7528\u6237\u540D',
+            value: this.state.username,
+            onChange: this.handleUsernameChange.bind(this)
           }),
           _react2.default.createElement(_TextField2.default, {
             className: 'login-box-text-field',
             hintText: '\u5BC6\u7801',
-            type: 'password'
+            type: 'password',
+            value: this.state.password,
+            onChange: this.handlePasswordChange.bind(this)
           }),
           _react2.default.createElement(
             'div',
@@ -73,12 +157,14 @@ var LoginBoxComponent = function (_React$Component) {
             _react2.default.createElement(_RaisedButton2.default, {
               className: 'login-box-login-btn',
               label: '\u767B\u5F55',
-              primary: true
+              primary: true,
+              onClick: this.login.bind(this)
             }),
             _react2.default.createElement(_FlatButton2.default, {
               className: 'login-box-register-btn',
               label: '\u8FD8\u6CA1\u6709\u8D26\u53F7\uFF0C\u73B0\u5728\u6CE8\u518C',
-              primary: true
+              primary: true,
+              onClick: this.register.bind(this)
             })
           )
         ),
@@ -86,7 +172,12 @@ var LoginBoxComponent = function (_React$Component) {
           'div',
           { className: 'footer' },
           '\xA9AlphaSeeker'
-        )
+        ),
+        _react2.default.createElement(_Snackbar2.default, {
+          open: this.state.open,
+          message: this.state.msg,
+          autoHideDuration: 2000
+        })
       );
     }
   }]);

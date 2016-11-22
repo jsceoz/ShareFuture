@@ -1,3 +1,11 @@
 .newsdetail-component {
-  border: 1px dashed #f00;
+
+}
+.news-detail-title {
+  font-size: 1.2rem;
+  margin: 20px 14px;
+}
+.news-detail-p {
+  margin: 15px 15px;
+  line-height: 1.8rem;
 }

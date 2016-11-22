@@ -34,6 +34,14 @@ var _FooterComponent = require('../public/FooterComponent');
 
 var _FooterComponent2 = _interopRequireDefault(_FooterComponent);
 
+var _Divider = require('material-ui/Divider');
+
+var _Divider2 = _interopRequireDefault(_Divider);
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -47,13 +55,44 @@ require('styles/account/AccountPage.css');
 var AccountPageComponent = function (_React$Component) {
   _inherits(AccountPageComponent, _React$Component);
 
-  function AccountPageComponent() {
+  function AccountPageComponent(props) {
     _classCallCheck(this, AccountPageComponent);
 
-    return _possibleConstructorReturn(this, (AccountPageComponent.__proto__ || Object.getPrototypeOf(AccountPageComponent)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (AccountPageComponent.__proto__ || Object.getPrototypeOf(AccountPageComponent)).call(this, props));
+
+    _this.state = {
+      info: {},
+      username: "jsss"
+    };
+    return _this;
   }
 
   _createClass(AccountPageComponent, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.getToken();
+      var token = this.state.token;
+      var self = this;
+      _jquery2.default.ajax({
+        method: "POST",
+        url: "http://121.201.68.143/account/get_account_money/",
+        async: true,
+        data: {
+          token: (0, _jquery2.default)("#app").attr("data-token"),
+          username: (0, _jquery2.default)("#app").attr("data-username")
+        }
+      }).done(function (data) {
+        console.log(data);
+      });
+    }
+  }, {
+    key: 'getToken',
+    value: function getToken() {
+      this.setState({
+        token: (0, _jquery2.default)("#app").attr("data-token")
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
@@ -73,11 +112,7 @@ var AccountPageComponent = function (_React$Component) {
               'li',
               null,
               '\u603B\u8D44\u4EA7',
-              _react2.default.createElement(
-                'p',
-                null,
-                '111'
-              )
+              _react2.default.createElement('p', null)
             ),
             _react2.default.createElement(
               'li',
@@ -116,9 +151,13 @@ var AccountPageComponent = function (_React$Component) {
           _react2.default.createElement(
             _Menu2.default,
             null,
+            _react2.default.createElement(_Divider2.default, null),
             _react2.default.createElement(_MenuItem2.default, { primaryText: '\u59D4\u6258/\u64A4\u5355', leftIcon: _react2.default.createElement(_delete2.default, null) }),
+            _react2.default.createElement(_Divider2.default, null),
             _react2.default.createElement(_MenuItem2.default, { primaryText: '\u6210\u4EA4\u8BB0\u5F55', leftIcon: _react2.default.createElement(_delete2.default, null) }),
+            _react2.default.createElement(_Divider2.default, null),
             _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D44\u4EA7\u5206\u6790', leftIcon: _react2.default.createElement(_delete2.default, null) }),
+            _react2.default.createElement(_Divider2.default, null),
             _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D26\u6237\u5145\u503C', leftIcon: _react2.default.createElement(_delete2.default, null) })
           )
         ),

@@ -5,12 +5,14 @@ import AppBar from 'material-ui/AppBar'
 import {List, ListItem} from 'material-ui/List';
 import Subheader from 'material-ui/Subheader';
 import Footer from '../public/FooterComponent';
+import Divider from 'material-ui/Divider';
 import IconButton from 'material-ui/IconButton';
 import IconTimeline from 'material-ui/svg-icons/action/timeline'
 import IconRP from 'material-ui/svg-icons/action/verified-user'
 import IconSchool from 'material-ui/svg-icons/action/store'
 import IconBBS from 'material-ui/svg-icons/action/toc'
 import $ from 'jquery'
+
 
 require('styles/home/HomePage.css');
 
@@ -40,7 +42,10 @@ class HomePageComponent extends React.Component {
         newsList:data
       })
     })
+  }
 
+  toNewsDetail(id) {
+    window.location.href="#/news/detail/"+id;
   }
 
   render() {
@@ -52,22 +57,22 @@ class HomePageComponent extends React.Component {
         />
         <div className="homepage-header-icon-wrapper">
           <div className="homepage-header-icon">
-            <IconButton className="homepage-icon-btn" iconStyle={style}>
+            <IconButton className="homepage-icon-btn" iconStyle={style} onClick={() => window.location.href="#/price/"}>
               <IconTimeline />
             </IconButton>
           </div>
           <div className="homepage-header-icon">
-            <IconButton className="homepage-icon-btn" iconStyle={style}>
+            <IconButton className="homepage-icon-btn" iconStyle={style} onClick={() => window.location.href="#/setting/"}>
               <IconRP />
             </IconButton>
           </div>
           <div className="homepage-header-icon">
-            <IconButton className="homepage-icon-btn" iconStyle={style}>
+            <IconButton className="homepage-icon-btn" iconStyle={style} onClick={() => window.location.href="#/school/"}>
               <IconSchool />
             </IconButton>
           </div>
           <div className="homepage-header-icon">
-            <IconButton className="homepage-icon-btn" iconStyle={style}>
+            <IconButton className="homepage-icon-btn" iconStyle={style} onClick={() => window.location.href="#/bbs/"}>
               <IconBBS />
             </IconButton>
           </div>
@@ -90,9 +95,13 @@ class HomePageComponent extends React.Component {
         <List className="homepage-news-list-wrapper">
           <Subheader>新闻中心</Subheader>
           {this.state.newsList.map((news) => (
+            <div>
             <ListItem
               primaryText={news.title}
+              onClick={() => this.toNewsDetail(news.id)}
             />
+            <Divider/>
+            </div>
           ))}
         </List>
         <Footer index={0}/>

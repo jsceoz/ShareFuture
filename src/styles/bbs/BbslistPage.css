@@ -1,3 +1,8 @@
 .bbslistpage-component {
-  border: 1px dashed #f00;
+
+}
+.btn-add-post {
+  position: fixed;
+  bottom:100px;
+  right: 30px;
 }
