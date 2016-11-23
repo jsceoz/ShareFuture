@@ -76,6 +76,14 @@ var _ResetPageComponent = require('./account/ResetPageComponent');
 
 var _ResetPageComponent2 = _interopRequireDefault(_ResetPageComponent);
 
+var _DealComponent = require('./price/DealComponent');
+
+var _DealComponent2 = _interopRequireDefault(_DealComponent);
+
+var _SettingComponent = require('./account/SettingComponent');
+
+var _SettingComponent2 = _interopRequireDefault(_SettingComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -119,10 +127,13 @@ var AppComponent = function (_React$Component) {
             _react2.default.createElement(_reactRouter.Route, { path: '/bbs', component: _BbslistPageComponent2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/bbs/detail/:id', component: _PostPageComponent2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/price', component: _PricePageComponent2.default }),
-            _react2.default.createElement(_reactRouter.Route, { path: '/price-detail', component: _PriceDetailComponent2.default }),
+            _react2.default.createElement(_reactRouter.Route, { path: '/price-detail/:name', component: _PriceDetailComponent2.default }),
+            _react2.default.createElement(_reactRouter.Route, { path: '/cancel', component: _CancelPageComponent2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/analysis', component: _AccountPageComponent2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/record', component: _RecordPageComponent2.default }),
-            _react2.default.createElement(_reactRouter.Route, { path: '/reset', component: _ResetPageComponent2.default })
+            _react2.default.createElement(_reactRouter.Route, { path: '/reset', component: _ResetPageComponent2.default }),
+            _react2.default.createElement(_reactRouter.Route, { path: '/deal/:name', component: _DealComponent2.default }),
+            _react2.default.createElement(_reactRouter.Route, { path: '/setting', component: _SettingComponent2.default })
           )
         )
       );

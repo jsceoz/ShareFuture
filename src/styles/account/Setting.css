@@ -1,0 +1,11 @@
+.setting-component {
+}
+.setting-text-wrapper {
+  width: 80%;
+  margin:0 auto;
+}
+.setting-submit-btn {
+  position: absolute;
+  bottom: 80px;
+  right: 30px;
+}

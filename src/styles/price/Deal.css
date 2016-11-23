@@ -1,0 +1,16 @@
+.deal-component {
+
+}
+.deal-wrapper {
+  width: 80%;
+  margin:0 auto;
+}
+.radio-btn {
+  margin: 10px auto;
+}
+
+.deal-submit-btn {
+  margin-left: 30%;
+  width: 40%;
+  margin-top: 10px;
+}

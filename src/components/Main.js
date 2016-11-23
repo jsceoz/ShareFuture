@@ -20,6 +20,8 @@ import AnalysisPage from './account/AccountPageComponent'
 import CancelPage from  './account/CancelPageComponent'
 import RecordPage from './account/RecordPageComponent'
 import ResetPage from './account/ResetPageComponent'
+import Deal from './price/DealComponent'
+import Setting from  './account/SettingComponent'
 
 
 class AppComponent extends React.Component {
@@ -39,10 +41,13 @@ class AppComponent extends React.Component {
             <Route path="/bbs" component={BBSPage}/>
             <Route path="/bbs/detail/:id" component={PostPage}/>
             <Route path="/price" component={PricePage}/>
-            <Route path="/price-detail" component={PriceDetail}/>
+            <Route path="/price-detail/:name" component={PriceDetail}/>
+            <Route path="/cancel" component={CancelPage}/>
             <Route path="/analysis" component={AnalysisPage}/>
             <Route path="/record" component={RecordPage}/>
             <Route path="/reset" component={ResetPage}/>
+            <Route path="/deal/:name" component={Deal}/>
+            <Route path="/setting" component={Setting}/>
           </Router>
         </div>
       </MuiThemeProvider>

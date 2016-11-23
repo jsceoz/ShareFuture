@@ -61,7 +61,14 @@ var AccountPageComponent = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (AccountPageComponent.__proto__ || Object.getPrototypeOf(AccountPageComponent)).call(this, props));
 
     _this.state = {
-      info: {},
+      info: {
+        available_money: 0,
+        available_money_ratio: 0,
+        floating_balance: 0,
+        realized_balance: 0,
+        today_balance: 0,
+        total_money: 0
+      },
       username: "jsss"
     };
     return _this;
@@ -76,7 +83,6 @@ var AccountPageComponent = function (_React$Component) {
       _jquery2.default.ajax({
         method: "POST",
         url: "http://121.201.68.143/account/get_account_money/",
-        async: true,
         data: {
           token: (0, _jquery2.default)("#app").attr("data-token"),
           username: (0, _jquery2.default)("#app").attr("data-username")
@@ -112,17 +118,31 @@ var AccountPageComponent = function (_React$Component) {
               'li',
               null,
               '\u603B\u8D44\u4EA7',
-              _react2.default.createElement('p', null)
+              _react2.default.createElement(
+                'p',
+                null,
+                this.state.info.total_money
+              )
             ),
             _react2.default.createElement(
               'li',
               null,
-              '\u53EF\u7528\u4FDD\u8BC1\u91D1'
+              '\u53EF\u7528\u4FDD\u8BC1\u91D1',
+              _react2.default.createElement(
+                'p',
+                null,
+                this.state.info.available_money
+              )
             ),
             _react2.default.createElement(
               'li',
               null,
-              '\u53EF\u7528\u4FDD\u8BC1\u91D1\u6BD4\u7387'
+              '\u53EF\u7528\u4FDD\u8BC1\u91D1\u6BD4\u7387',
+              _react2.default.createElement(
+                'p',
+                null,
+                this.state.info.available_money_ratio
+              )
             )
           ),
           _react2.default.createElement(
@@ -131,17 +151,32 @@ var AccountPageComponent = function (_React$Component) {
             _react2.default.createElement(
               'li',
               null,
-              '\u5F53\u65E5\u76C8\u4E8F'
+              '\u5F53\u65E5\u76C8\u4E8F',
+              _react2.default.createElement(
+                'p',
+                null,
+                this.state.info.today_balance
+              )
             ),
             _react2.default.createElement(
               'li',
               null,
-              '\u5B9E\u73B0\u76C8\u4E8F'
+              '\u5B9E\u73B0\u76C8\u4E8F',
+              _react2.default.createElement(
+                'p',
+                null,
+                this.state.info.realized_balance
+              )
             ),
             _react2.default.createElement(
               'li',
               null,
-              '\u6D6E\u52A8\u76C8\u4E8F'
+              '\u6D6E\u52A8\u76C8\u4E8F',
+              _react2.default.createElement(
+                'p',
+                null,
+                this.state.info.floating_balance
+              )
             )
           )
         ),
@@ -152,13 +187,21 @@ var AccountPageComponent = function (_React$Component) {
             _Menu2.default,
             null,
             _react2.default.createElement(_Divider2.default, null),
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u59D4\u6258/\u64A4\u5355', leftIcon: _react2.default.createElement(_delete2.default, null) }),
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u59D4\u6258/\u64A4\u5355', leftIcon: _react2.default.createElement(_delete2.default, null), onClick: function onClick() {
+                return window.location.href = "#/cancel/";
+              } }),
             _react2.default.createElement(_Divider2.default, null),
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u6210\u4EA4\u8BB0\u5F55', leftIcon: _react2.default.createElement(_delete2.default, null) }),
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u6210\u4EA4\u8BB0\u5F55', leftIcon: _react2.default.createElement(_delete2.default, null), onClick: function onClick() {
+                return window.location.href = "#/record/";
+              } }),
             _react2.default.createElement(_Divider2.default, null),
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D44\u4EA7\u5206\u6790', leftIcon: _react2.default.createElement(_delete2.default, null) }),
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D44\u4EA7\u5206\u6790', leftIcon: _react2.default.createElement(_delete2.default, null), onClick: function onClick() {
+                return window.location.href = "#/analysis/";
+              } }),
             _react2.default.createElement(_Divider2.default, null),
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D26\u6237\u5145\u503C', leftIcon: _react2.default.createElement(_delete2.default, null) })
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D26\u6237\u91CD\u7F6E', leftIcon: _react2.default.createElement(_delete2.default, null), onClick: function onClick() {
+                return window.location.href = "#/reset/";
+              } })
           )
         ),
         _react2.default.createElement(_FooterComponent2.default, { index: 3 })
