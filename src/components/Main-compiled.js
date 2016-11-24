@@ -64,6 +64,10 @@ var _PriceDetailComponent = require('./price/PriceDetailComponent');
 
 var _PriceDetailComponent2 = _interopRequireDefault(_PriceDetailComponent);
 
+var _AnalysisPageComponent = require('./account/AnalysisPageComponent');
+
+var _AnalysisPageComponent2 = _interopRequireDefault(_AnalysisPageComponent);
+
 var _CancelPageComponent = require('./account/CancelPageComponent');
 
 var _CancelPageComponent2 = _interopRequireDefault(_CancelPageComponent);
@@ -129,7 +133,7 @@ var AppComponent = function (_React$Component) {
             _react2.default.createElement(_reactRouter.Route, { path: '/price', component: _PricePageComponent2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/price-detail/:name', component: _PriceDetailComponent2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/cancel', component: _CancelPageComponent2.default }),
-            _react2.default.createElement(_reactRouter.Route, { path: '/analysis', component: _AccountPageComponent2.default }),
+            _react2.default.createElement(_reactRouter.Route, { path: '/analysis', component: _AnalysisPageComponent2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/record', component: _RecordPageComponent2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/reset', component: _ResetPageComponent2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/deal/:name', component: _DealComponent2.default }),

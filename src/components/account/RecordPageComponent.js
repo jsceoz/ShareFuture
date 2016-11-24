@@ -42,26 +42,29 @@ class RecordPageComponent extends React.Component {
           title="成交记录"
           showMenuIconButton={false}
         />
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHeaderColumn>合约</TableHeaderColumn>
-              <TableHeaderColumn>数量</TableHeaderColumn>
-              <TableHeaderColumn>时间</TableHeaderColumn>
-              <TableHeaderColumn>价格</TableHeaderColumn>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
-            {this.state.list.map((item) => (
-              <TableRow>
-                <TableRowColumn>{item.contract_name}</TableRowColumn>
-                <TableRowColumn>{item.num}</TableRowColumn>
-                <TableRowColumn>{item.time}</TableRowColumn>
-                <TableRowColumn>{item.expected_price}</TableRowColumn>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+       <table className="record-table">
+         <tr className="table-row">
+          <th>时间</th>
+          <th>合约</th>
+          <th>动态</th>
+          <th>数量</th>
+          <th>均价</th>
+         </tr>
+         <tr>
+           <td>7/4 11:04</td>
+           <td>IF1607</td>
+           <td>卖出</td>
+           <td>11</td>
+           <td>3168.2</td>
+         </tr>
+         <tr>
+           <td>7/4 14:59</td>
+           <td>IF1607</td>
+           <td>买入</td>
+           <td>11</td>
+           <td>3164.2</td>
+         </tr>
+       </table>
         <Footer index={3}/>
       </div>
     );

@@ -6,6 +6,9 @@ import MenuItem from 'material-ui/MenuItem'
 import Paper from 'material-ui/Paper'
 import AppBar from 'material-ui/AppBar'
 import Delete from 'material-ui/svg-icons/action/delete';
+import LineWeight from 'material-ui/svg-icons/action/line-weight'
+import Description from 'material-ui/svg-icons/action/description'
+import BackUp from 'material-ui/svg-icons/action/settings-backup-restore'
 import Footer from '../public/FooterComponent'
 import Divider from 'material-ui/Divider'
 import $ from 'jquery'
@@ -25,35 +28,26 @@ class AccountPageComponent extends React.Component {
         today_balance:0,
         total_money:0
       },
-      username:"jsss"
+      username:'jsss'
     }
   }
 
   componentDidMount() {
-    this.getToken();
-    let token =this.state.token;
-    let self = this;
     $.ajax({
-      method:"POST",
-      url:"http://121.201.68.143/account/get_account_money/",
+      method:'POST',
+      url:'http://121.201.68.143/account/get_account_money/',
       data:{
-        token:$("#app").attr("data-token"),
-        username:$("#app").attr("data-username")
+        token:$('#app').attr('data-token'),
+        username:$('#app').attr('data-username')
       }
     }).done(function (data) {
       console.log(data)
     })
   }
 
-  getToken() {
-    this.setState({
-      token:$("#app").attr("data-token")
-    })
-  }
-
   render() {
     return (
-      <div className="accountpage-component">
+      <div className='accountpage-component'>
         <AppBar
           title="账户"
           showMenuIconButton={false}
@@ -73,13 +67,13 @@ class AccountPageComponent extends React.Component {
         <Paper className="paper-menu">
           <Menu>
             <Divider/>
-            <MenuItem primaryText="委托/撤单" leftIcon={<Delete/>} onClick={() =>　window.location.href="#/cancel/"}/>
+            <MenuItem primaryText="委托/撤单" leftIcon={<Delete/>} onClick={() =>　window.location.href='#/cancel/'}/>
             <Divider/>
-            <MenuItem primaryText="成交记录" leftIcon={<Delete/>} onClick={() =>　window.location.href="#/record/"}/>
+            <MenuItem primaryText="成交记录" leftIcon={<LineWeight/>} onClick={() =>　window.location.href='#/record/'}/>
             <Divider/>
-            <MenuItem primaryText="资产分析" leftIcon={<Delete/>} onClick={() =>　window.location.href="#/analysis/"}/>
+            <MenuItem primaryText="资产分析" leftIcon={<Description/>} onClick={() =>　window.location.href='#/analysis/'}/>
             <Divider/>
-            <MenuItem primaryText="账户重置" leftIcon={<Delete/>} onClick={() =>　window.location.href="#/reset/"}/>
+            <MenuItem primaryText="账户重置" leftIcon={<BackUp/>} onClick={() =>　window.location.href='#/reset/'}/>
           </Menu>
         </Paper>
         <Footer index={3} />

@@ -26,6 +26,20 @@ var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
+var _List = require('material-ui/List');
+
+var _Subheader = require('material-ui/Subheader');
+
+var _Subheader2 = _interopRequireDefault(_Subheader);
+
+var _TextField = require('material-ui/TextField');
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _FlatButton = require('material-ui/FlatButton');
+
+var _FlatButton2 = _interopRequireDefault(_FlatButton);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -46,7 +60,9 @@ var PostPageComponent = function (_React$Component) {
 
     _this.state = {
       title: "",
-      content: ""
+      content: "",
+      comment: [],
+      commentVal: '发表评论'
     };
     return _this;
   }
@@ -62,8 +78,33 @@ var PostPageComponent = function (_React$Component) {
         console.log(data);
         self.setState({
           title: data.article.title,
-          content: data.article.content
+          content: data.article.content,
+          comment: data.comment
         });
+      });
+    }
+  }, {
+    key: 'handleCommentChange',
+    value: function handleCommentChange(e) {
+      this.setState({
+        commentVal: e.target.value
+      });
+    }
+  }, {
+    key: 'commentSubmit',
+    value: function commentSubmit() {
+      _jquery2.default.ajax({
+        method: "POST",
+        url: "http://121.201.68.143/bbs/addcomment/",
+        data: {
+          articleid: this.props.params.id,
+          parentid: 'Null',
+          comment: this.state.commentVal,
+          user: (0, _jquery2.default)('#app').attr('data-username'),
+          token: (0, _jquery2.default)('#app').attr('data-token')
+        }
+      }).done(function (data) {
+        console.log(data);
       });
     }
   }, {
@@ -86,6 +127,36 @@ var PostPageComponent = function (_React$Component) {
           'p',
           { className: 'post-p' },
           this.state.content
+        ),
+        _react2.default.createElement(
+          _List.List,
+          null,
+          _react2.default.createElement(
+            _Subheader2.default,
+            null,
+            '\u8BC4\u8BBA'
+          ),
+          this.state.comment.map(function (item) {
+            return _react2.default.createElement(_List.ListItem, {
+              primaryText: item.content,
+              secondaryText: item.user
+            });
+          })
+        ),
+        _react2.default.createElement(
+          'div',
+          { className: 'post-comment-text-wrapper' },
+          _react2.default.createElement(_TextField2.default, {
+            className: 'comment-input',
+            hintText: '\u53D1\u8868\u8BC4\u8BBA',
+            value: this.state.commentVal,
+            onChange: this.handleCommentChange.bind(this)
+          }),
+          _react2.default.createElement(_FlatButton2.default, {
+            className: 'comment-submit-btn',
+            label: '\u786E\u5B9A',
+            primary: true
+          })
         ),
         _react2.default.createElement(_FooterComponent2.default, { index: 0 })
       );

@@ -1,8 +1,10 @@
 .pricepage-component {
 }
 .price-row {
-  margin-top: 10px;
+  height: 30px;
+  line-height:30px;
   padding-left: 10px;
+  border-bottom: 1px solid #000;
 }
 .price-row a{
   margin-right: 50px;

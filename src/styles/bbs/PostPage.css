@@ -8,3 +8,17 @@
 .post-p {
   margin: 20px 15px;
 }
+.post-comment-text-wrapper {
+  width: 80%;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+.comment-input {
+  width: 100px;
+}
+.comment-submit-btn {
+  position: absolute;
+  bottom: 40px;
+  left: 220px;
+}

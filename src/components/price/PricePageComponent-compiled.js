@@ -52,7 +52,7 @@ var PricePageComponent = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var self = this;
-      var getList = ['IF1611', 'IF1612', 'IF1703', 'IH1611', 'IH1612', 'IH1703', 'IC1611', 'IC1612', 'IC1703'];
+      var getList = ['IF1612', 'IF1701', 'IF1703', 'IF1706', 'IH1612', 'IH1701', 'IH1703', 'IH1706', 'IC1612', 'IC1701', 'IC1703', 'IC1706'];
       for (var i = 0; i < getList.length; i++) {
         _jquery2.default.ajax({
           method: "GET",

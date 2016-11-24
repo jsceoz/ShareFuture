@@ -18,7 +18,7 @@ class PricePageComponent extends React.Component {
 
   componentDidMount() {
     let self = this;
-    let getList = ['IF1611', 'IF1612', 'IF1703', 'IH1611', 'IH1612', 'IH1703', 'IC1611', 'IC1612', 'IC1703']
+    let getList = ['IF1612', 'IF1701', 'IF1703', 'IF1706', 'IH1612', 'IH1701', 'IH1703', 'IH1706', 'IC1612', 'IC1701', 'IC1703', 'IC1706']
     for (let i = 0; i < getList.length; i++){
       $.ajax({
         method:"GET",

@@ -30,6 +30,18 @@ var _delete = require('material-ui/svg-icons/action/delete');
 
 var _delete2 = _interopRequireDefault(_delete);
 
+var _lineWeight = require('material-ui/svg-icons/action/line-weight');
+
+var _lineWeight2 = _interopRequireDefault(_lineWeight);
+
+var _description = require('material-ui/svg-icons/action/description');
+
+var _description2 = _interopRequireDefault(_description);
+
+var _settingsBackupRestore = require('material-ui/svg-icons/action/settings-backup-restore');
+
+var _settingsBackupRestore2 = _interopRequireDefault(_settingsBackupRestore);
+
 var _FooterComponent = require('../public/FooterComponent');
 
 var _FooterComponent2 = _interopRequireDefault(_FooterComponent);
@@ -69,7 +81,7 @@ var AccountPageComponent = function (_React$Component) {
         today_balance: 0,
         total_money: 0
       },
-      username: "jsss"
+      username: 'jsss'
     };
     return _this;
   }
@@ -77,25 +89,15 @@ var AccountPageComponent = function (_React$Component) {
   _createClass(AccountPageComponent, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.getToken();
-      var token = this.state.token;
-      var self = this;
       _jquery2.default.ajax({
-        method: "POST",
-        url: "http://121.201.68.143/account/get_account_money/",
+        method: 'POST',
+        url: 'http://121.201.68.143/account/get_account_money/',
         data: {
-          token: (0, _jquery2.default)("#app").attr("data-token"),
-          username: (0, _jquery2.default)("#app").attr("data-username")
+          token: (0, _jquery2.default)('#app').attr('data-token'),
+          username: (0, _jquery2.default)('#app').attr('data-username')
         }
       }).done(function (data) {
         console.log(data);
-      });
-    }
-  }, {
-    key: 'getToken',
-    value: function getToken() {
-      this.setState({
-        token: (0, _jquery2.default)("#app").attr("data-token")
       });
     }
   }, {
@@ -188,19 +190,19 @@ var AccountPageComponent = function (_React$Component) {
             null,
             _react2.default.createElement(_Divider2.default, null),
             _react2.default.createElement(_MenuItem2.default, { primaryText: '\u59D4\u6258/\u64A4\u5355', leftIcon: _react2.default.createElement(_delete2.default, null), onClick: function onClick() {
-                return window.location.href = "#/cancel/";
+                return window.location.href = '#/cancel/';
               } }),
             _react2.default.createElement(_Divider2.default, null),
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u6210\u4EA4\u8BB0\u5F55', leftIcon: _react2.default.createElement(_delete2.default, null), onClick: function onClick() {
-                return window.location.href = "#/record/";
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u6210\u4EA4\u8BB0\u5F55', leftIcon: _react2.default.createElement(_lineWeight2.default, null), onClick: function onClick() {
+                return window.location.href = '#/record/';
               } }),
             _react2.default.createElement(_Divider2.default, null),
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D44\u4EA7\u5206\u6790', leftIcon: _react2.default.createElement(_delete2.default, null), onClick: function onClick() {
-                return window.location.href = "#/analysis/";
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D44\u4EA7\u5206\u6790', leftIcon: _react2.default.createElement(_description2.default, null), onClick: function onClick() {
+                return window.location.href = '#/analysis/';
               } }),
             _react2.default.createElement(_Divider2.default, null),
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D26\u6237\u91CD\u7F6E', leftIcon: _react2.default.createElement(_delete2.default, null), onClick: function onClick() {
-                return window.location.href = "#/reset/";
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D26\u6237\u91CD\u7F6E', leftIcon: _react2.default.createElement(_settingsBackupRestore2.default, null), onClick: function onClick() {
+                return window.location.href = '#/reset/';
               } })
           )
         ),

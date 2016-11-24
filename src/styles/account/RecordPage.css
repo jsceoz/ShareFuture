@@ -1,3 +1,21 @@
 .recordpage-component {
 
 }
+.record-table th {
+  font-weight: 400;
+  border-right: 1px solid #eee;
+}
+.record-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-row {
+  background: #eee;
+  height: 30px;
+  font-size: 0.9rem;
+}
+tr{
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px solid #aaa;
+}

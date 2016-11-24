@@ -77,65 +77,94 @@ var RecordPageComponent = function (_React$Component) {
           showMenuIconButton: false
         }),
         _react2.default.createElement(
-          _Table.Table,
-          null,
+          'table',
+          { className: 'record-table' },
           _react2.default.createElement(
-            _Table.TableHeader,
-            null,
+            'tr',
+            { className: 'table-row' },
             _react2.default.createElement(
-              _Table.TableRow,
+              'th',
               null,
-              _react2.default.createElement(
-                _Table.TableHeaderColumn,
-                null,
-                '\u5408\u7EA6'
-              ),
-              _react2.default.createElement(
-                _Table.TableHeaderColumn,
-                null,
-                '\u6570\u91CF'
-              ),
-              _react2.default.createElement(
-                _Table.TableHeaderColumn,
-                null,
-                '\u65F6\u95F4'
-              ),
-              _react2.default.createElement(
-                _Table.TableHeaderColumn,
-                null,
-                '\u4EF7\u683C'
-              )
+              '\u65F6\u95F4'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              '\u5408\u7EA6'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              '\u52A8\u6001'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              '\u6570\u91CF'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              '\u5747\u4EF7'
             )
           ),
           _react2.default.createElement(
-            _Table.TableBody,
+            'tr',
             null,
-            this.state.list.map(function (item) {
-              return _react2.default.createElement(
-                _Table.TableRow,
-                null,
-                _react2.default.createElement(
-                  _Table.TableRowColumn,
-                  null,
-                  item.contract_name
-                ),
-                _react2.default.createElement(
-                  _Table.TableRowColumn,
-                  null,
-                  item.num
-                ),
-                _react2.default.createElement(
-                  _Table.TableRowColumn,
-                  null,
-                  item.time
-                ),
-                _react2.default.createElement(
-                  _Table.TableRowColumn,
-                  null,
-                  item.expected_price
-                )
-              );
-            })
+            _react2.default.createElement(
+              'td',
+              null,
+              '7/4 11:04'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              'IF1607'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              '\u5356\u51FA'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              '11'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              '3168.2'
+            )
+          ),
+          _react2.default.createElement(
+            'tr',
+            null,
+            _react2.default.createElement(
+              'td',
+              null,
+              '7/4 14:59'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              'IF1607'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              '\u4E70\u5165'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              '11'
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              '3164.2'
+            )
           )
         ),
         _react2.default.createElement(_FooterComponent2.default, { index: 3 })
