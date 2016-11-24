@@ -43,7 +43,7 @@ var PricePageComponent = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (PricePageComponent.__proto__ || Object.getPrototypeOf(PricePageComponent)).call(this, props));
 
     _this.state = {
-      list: [['IF1611', 3427400, 1400, 4], ['IH1611', 3427400, 1400, 4]]
+      list: []
     };
     return _this;
   }
@@ -51,14 +51,23 @@ var PricePageComponent = function (_React$Component) {
   _createClass(PricePageComponent, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      _jquery2.default.ajax({
-        method: "GET",
-        url: "http://121.201.68.143/data/get_instant/?contract=IF1611"
-      }).done(function (data) {
-        console.log(data[0]);
-        data.replace('D', '');
-        console.log(data);
-      });
+      var self = this;
+      var getList = ['IF1611', 'IF1612', 'IF1703', 'IH1611', 'IH1612', 'IH1703', 'IC1611', 'IC1612', 'IC1703'];
+      for (var i = 0; i < getList.length; i++) {
+        _jquery2.default.ajax({
+          method: "GET",
+          url: "http://121.201.68.143/data/get_instant/?contract=" + getList[i]
+        }).done(function (data) {
+          console.log(data[0]);
+          data = JSON.parse(data);
+          console.log(data.Data[0][0]);
+          var oldList = self.state.list;
+          oldList.push(data.Data[0][0]);
+          self.setState({
+            list: oldList
+          });
+        });
+      }
     }
   }, {
     key: 'handleClickRow',

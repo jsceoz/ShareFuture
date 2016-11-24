@@ -12,19 +12,28 @@ class PricePageComponent extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      list:[['IF1611', 3427400, 1400, 4],['IH1611', 3427400, 1400, 4]]
+      list:[]
     }
   }
 
   componentDidMount() {
-    $.ajax({
-      method:"GET",
-      url:"http://121.201.68.143/data/get_instant/?contract=IF1611",
-    }).done(function (data) {
-      console.log(data[0]);
-      data.replace('D', '');
-      console.log(data)
-    })
+    let self = this;
+    let getList = ['IF1611', 'IF1612', 'IF1703', 'IH1611', 'IH1612', 'IH1703', 'IC1611', 'IC1612', 'IC1703']
+    for (let i = 0; i < getList.length; i++){
+      $.ajax({
+        method:"GET",
+        url:"http://121.201.68.143/data/get_instant/?contract="+getList[i],
+      }).done(function (data) {
+        console.log(data[0]);
+        data = JSON.parse(data);
+        console.log(data.Data[0][0]);
+        let oldList = self.state.list;
+        oldList.push(data.Data[0][0]);
+        self.setState({
+          list:oldList
+        })
+      })
+    }
   }
 
   handleClickRow() {
