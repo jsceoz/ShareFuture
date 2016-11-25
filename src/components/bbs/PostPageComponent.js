@@ -33,7 +33,7 @@ class PostPageComponent extends React.Component {
       self.setState({
         title:data.article.title,
         content:data.article.content,
-        comment:data.comment
+        comment:data.comment,
       })
     })
   }
@@ -47,12 +47,12 @@ class PostPageComponent extends React.Component {
   commentSubmit() {
     $.ajax({
       method:"POST",
-      url:"http://121.201.68.143/bbs/addcomment/",
+      url:"http://121.201.68.143/bbs/addconment/",
       data:{
         articleid:this.props.params.id,
         parentid:'Null',
         comment:this.state.commentVal,
-        user:$('#app').attr('data-username'),
+        username:$('#app').attr('data-username'),
         token:$('#app').attr('data-token')
       }
     }).done(function (data) {
@@ -90,6 +90,7 @@ class PostPageComponent extends React.Component {
             className="comment-submit-btn"
             label="确定"
             primary={true}
+            onClick={this.commentSubmit.bind(this)}
           />
         </div>
         <Footer index={0}/>

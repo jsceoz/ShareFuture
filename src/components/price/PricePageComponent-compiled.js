@@ -125,7 +125,7 @@ var PricePageComponent = function (_React$Component) {
               return _react2.default.createElement(
                 'div',
                 { className: 'price-row', onClick: function onClick() {
-                    return window.location.href = "#/price-detail/" + item[0];
+                    return window.location.href = "#/pde/IF1612";
                   } },
                 _react2.default.createElement(
                   'a',
@@ -140,12 +140,12 @@ var PricePageComponent = function (_React$Component) {
                 _react2.default.createElement(
                   'a',
                   null,
-                  item[2] / 1000
+                  item[8] / 1000
                 ),
                 _react2.default.createElement(
                   'a',
                   null,
-                  item[3] / 1000
+                  item[9] / 1000
                 )
               );
             })

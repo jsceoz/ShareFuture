@@ -61,11 +61,11 @@ class PricePageComponent extends React.Component {
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
             {this.state.list.map((item) => (
-              <div className="price-row" onClick={() => window.location.href="#/price-detail/"+item[0]}>
+              <div className="price-row" onClick={() => window.location.href="#/pde/IF1612"}>
                 <a>{item[0]}</a>
                 <a>{item[1]/1000}</a>
-                <a>{item[2]/1000}</a>
-                <a>{item[3]/1000}</a>
+                <a>{item[8]/1000}</a>
+                <a>{item[9]/1000}</a>
               </div>
             ))}
           </TableBody>

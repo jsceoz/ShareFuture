@@ -10,6 +10,26 @@ var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
+var _AppBar = require('material-ui/AppBar');
+
+var _AppBar2 = _interopRequireDefault(_AppBar);
+
+var _FooterComponent = require('../public/FooterComponent');
+
+var _FooterComponent2 = _interopRequireDefault(_FooterComponent);
+
+var _TextField = require('material-ui/TextField');
+
+var _TextField2 = _interopRequireDefault(_TextField);
+
+var _RaisedButton = require('material-ui/RaisedButton');
+
+var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -23,19 +43,81 @@ require('styles/bbs/CreatePost.css');
 var CreatePostComponent = function (_React$Component) {
   _inherits(CreatePostComponent, _React$Component);
 
-  function CreatePostComponent() {
+  function CreatePostComponent(props) {
     _classCallCheck(this, CreatePostComponent);
 
-    return _possibleConstructorReturn(this, (CreatePostComponent.__proto__ || Object.getPrototypeOf(CreatePostComponent)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (CreatePostComponent.__proto__ || Object.getPrototypeOf(CreatePostComponent)).call(this, props));
+
+    _this.state = {
+      title: '',
+      content: ''
+    };
+    return _this;
   }
 
   _createClass(CreatePostComponent, [{
+    key: 'handleTitleChange',
+    value: function handleTitleChange(e) {
+      this.setState({
+        title: e.target.value
+      });
+    }
+  }, {
+    key: 'handleContentChange',
+    value: function handleContentChange(e) {
+      this.setState({
+        content: e.target.value
+      });
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit() {
+      _jquery2.default.ajax({
+        method: "POST",
+        url: 'http://121.201.68.143/bbs/addarticle/',
+        data: {
+          title: this.state.title,
+          content: this.state.content,
+          category: '技巧分析',
+          token: (0, _jquery2.default)('#app').attr('data-token'),
+          username: (0, _jquery2.default)('#app').attr('data-username')
+        }
+      });
+    }
+  }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(
         'div',
         { className: 'createpost-component' },
-        'Please edit src/components/bbs//CreatePostComponent.js to update this component!'
+        _react2.default.createElement(_AppBar2.default, {
+          title: '\u53D1\u5E16',
+          showMenuIconButton: false
+        }),
+        _react2.default.createElement(_FooterComponent2.default, { index: 0 }),
+        _react2.default.createElement(
+          'div',
+          { className: 'post-input-wrapper' },
+          _react2.default.createElement(_TextField2.default, {
+            hintText: '\u6807\u9898',
+            floatingLabelText: '\u6807\u9898',
+            onChange: this.handleTitleChange.bind(this)
+          }),
+          _react2.default.createElement(_TextField2.default, {
+            hintText: '\u5E16\u5B50\u5185\u5BB9',
+            floatingLabelText: '\u53D1\u8868\u65B0\u5E16',
+            multiLine: true,
+            rows: 2,
+            onChange: this.handleContentChange.bind(this)
+          }),
+          _react2.default.createElement(_RaisedButton2.default, {
+            className: 'create-post-btn',
+            label: '\u53D1\u8868',
+            primary: true,
+            fullWidth: true,
+            onClick: this.handleSubmit.bind(this)
+          })
+        )
       );
     }
   }]);

@@ -80,7 +80,7 @@ var PriceDetailComponent = function (_React$Component) {
             var list = self.state.history_list;
             var item = [];
             item[1] = data[i].price;
-            item[0] = data[i].time;
+            item[0] = data[i].num;
             list.push(item);
             self.setState({
               history_list: list
@@ -90,10 +90,15 @@ var PriceDetailComponent = function (_React$Component) {
           console.log(line_arr);
           var myChart = echarts.init(document.getElementById('main'));
           myChart.setOption({
+            grid: {
+              left: 40
+            },
             tooltip: {},
             xAxis: {
-              type: 'time'
-
+              type: 'value',
+              axisLabel: {
+                show: false
+              }
             },
             yAxis: {
               type: 'value',
@@ -105,17 +110,30 @@ var PriceDetailComponent = function (_React$Component) {
               data: self.state.history_list,
               sampling: 'average',
               symbol: 'none'
-            }, {
-              name: '1',
-              type: 'line',
-              data: [['2016-11-25 09:30:00', line_arr[0]], [s, line_arr[0]]]
-
-            }, {
-              name: '2',
-              type: 'line',
-              data: [['2016-11-25 09:30:00', line_arr[1]], [s, line_arr[1]]]
-
-            }]
+            }
+            // {
+            //   name: '1',
+            //   type: 'line',
+            //   data: [['2016-11-25 09:30:00',line_arr[0]], [s,line_arr[0]]]
+            //
+            // },
+            // {
+            //   name: '2',
+            //   type: 'line',
+            //   data: [['2016-11-25 09:30:00',line_arr[1]], [s,line_arr[1]]]
+            //
+            // },
+            // {
+            //   name: '3',
+            //   type: 'line',
+            //   data: [['2016-11-25 09:30:00',line_arr[0]+25], [s,line_arr[0]+25]]
+            // },
+            // {
+            //   name: '4',
+            //   type: 'line',
+            //   data: [['2016-11-25 09:30:00',line_arr[1]-20], [s,line_arr[1]-20]]
+            // },
+            ]
           });
         });
       });

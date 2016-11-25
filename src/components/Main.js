@@ -22,6 +22,8 @@ import RecordPage from './account/RecordPageComponent'
 import ResetPage from './account/ResetPageComponent'
 import Deal from './price/DealComponent'
 import Setting from  './account/SettingComponent'
+import PDE from './price/PricedetailexComponent'
+import CreatePost from './bbs/CreatePostComponent'
 
 
 class AppComponent extends React.Component {
@@ -48,6 +50,8 @@ class AppComponent extends React.Component {
             <Route path="/reset" component={ResetPage}/>
             <Route path="/deal/:name" component={Deal}/>
             <Route path="/setting" component={Setting}/>
+            <Route path="/pde/:name" component={PDE}/>
+            <Route path="/create" component={CreatePost}/>
           </Router>
         </div>
       </MuiThemeProvider>

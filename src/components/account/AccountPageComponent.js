@@ -41,10 +41,10 @@ class AccountPageComponent extends React.Component {
         username:$('#app').attr('data-username')
       }
     }).done(function (data) {
-      //let data_obj = JSON.parse(data);
-      console.log(data);
+      let data_obj = JSON.parse(data);
+      console.log(data_obj);
       self.setState({
-        info:data[0]
+        info:data_obj
       })
     })
   }
@@ -58,14 +58,14 @@ class AccountPageComponent extends React.Component {
         />
         <Paper className="account-header-info-wrapper">
           <div className="account-header-list">
-            <li>总资产<p>5000000</p></li>
-            <li>可用保证金<p>5000000</p></li>
+            <li>总资产<p>19855000</p></li>
+            <li>可用保证金<p>19855000</p></li>
             <li>可用保证金比率<p>100%</p></li>
           </div>
           <div className="account-header-list">
-            <li>当日盈亏<p>0</p></li>
-            <li>实现盈亏<p>0</p></li>
-            <li>浮动盈亏<p>0</p></li>
+            <li>当日盈亏<p>{this.state.info[3]}</p></li>
+            <li>实现盈亏<p>{this.state.info[4]}</p></li>
+            <li>浮动盈亏<p>{this.state.info[5]}</p></li>
           </div>
         </Paper>
         <Paper className="paper-menu">

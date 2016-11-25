@@ -97,10 +97,10 @@ var AccountPageComponent = function (_React$Component) {
           username: (0, _jquery2.default)('#app').attr('data-username')
         }
       }).done(function (data) {
-        //let data_obj = JSON.parse(data);
-        console.log(data);
+        var data_obj = JSON.parse(data);
+        console.log(data_obj);
         self.setState({
-          info: data[0]
+          info: data_obj
         });
       });
     }
@@ -127,7 +127,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                '5000000'
+                '19855000'
               )
             ),
             _react2.default.createElement(
@@ -137,7 +137,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                '5000000'
+                '19855000'
               )
             ),
             _react2.default.createElement(
@@ -161,7 +161,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                '0'
+                this.state.info[3]
               )
             ),
             _react2.default.createElement(
@@ -171,7 +171,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                '0'
+                this.state.info[4]
               )
             ),
             _react2.default.createElement(
@@ -181,7 +181,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                '0'
+                this.state.info[5]
               )
             )
           )

@@ -1,3 +1,25 @@
 .createpost-component {
-  border: 1px dashed #f00;
+
+}
+.post-input-wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+.create-post-btn {
+  margin-top: 20px;
+}
+.time-1 {
+  margin-top: -50px;
+  margin-left: 60px;
+  font-size: 0.8rem;
+}
+.time-2 {
+  margin-top: -28px;
+  margin-left: 170px;
+  font-size: 0.8rem;
+}
+.time-3 {
+  margin-top: -28px;
+  margin-left: 280px;
+  font-size: 0.8rem;
 }

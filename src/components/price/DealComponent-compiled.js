@@ -78,7 +78,7 @@ var DealComponent = function (_React$Component) {
           token: (0, _jquery2.default)("#app").attr("data-token"),
           contract: this.state.contract,
           price: this.state.price,
-          number: this.state.number
+          number: this.state.num
         }
       }).done(function (data) {
         console.log(data);

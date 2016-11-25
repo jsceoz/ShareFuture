@@ -88,6 +88,14 @@ var _SettingComponent = require('./account/SettingComponent');
 
 var _SettingComponent2 = _interopRequireDefault(_SettingComponent);
 
+var _PricedetailexComponent = require('./price/PricedetailexComponent');
+
+var _PricedetailexComponent2 = _interopRequireDefault(_PricedetailexComponent);
+
+var _CreatePostComponent = require('./bbs/CreatePostComponent');
+
+var _CreatePostComponent2 = _interopRequireDefault(_CreatePostComponent);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -137,7 +145,9 @@ var AppComponent = function (_React$Component) {
             _react2.default.createElement(_reactRouter.Route, { path: '/record', component: _RecordPageComponent2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/reset', component: _ResetPageComponent2.default }),
             _react2.default.createElement(_reactRouter.Route, { path: '/deal/:name', component: _DealComponent2.default }),
-            _react2.default.createElement(_reactRouter.Route, { path: '/setting', component: _SettingComponent2.default })
+            _react2.default.createElement(_reactRouter.Route, { path: '/setting', component: _SettingComponent2.default }),
+            _react2.default.createElement(_reactRouter.Route, { path: '/pde/:name', component: _PricedetailexComponent2.default }),
+            _react2.default.createElement(_reactRouter.Route, { path: '/create', component: _CreatePostComponent2.default })
           )
         )
       );

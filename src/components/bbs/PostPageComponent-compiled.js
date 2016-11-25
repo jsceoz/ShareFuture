@@ -95,12 +95,12 @@ var PostPageComponent = function (_React$Component) {
     value: function commentSubmit() {
       _jquery2.default.ajax({
         method: "POST",
-        url: "http://121.201.68.143/bbs/addcomment/",
+        url: "http://121.201.68.143/bbs/addconment/",
         data: {
           articleid: this.props.params.id,
           parentid: 'Null',
           comment: this.state.commentVal,
-          user: (0, _jquery2.default)('#app').attr('data-username'),
+          username: (0, _jquery2.default)('#app').attr('data-username'),
           token: (0, _jquery2.default)('#app').attr('data-token')
         }
       }).done(function (data) {
@@ -155,7 +155,8 @@ var PostPageComponent = function (_React$Component) {
           _react2.default.createElement(_FlatButton2.default, {
             className: 'comment-submit-btn',
             label: '\u786E\u5B9A',
-            primary: true
+            primary: true,
+            onClick: this.commentSubmit.bind(this)
           })
         ),
         _react2.default.createElement(_FooterComponent2.default, { index: 0 })
