@@ -80,8 +80,7 @@ var AccountPageComponent = function (_React$Component) {
         realized_balance: 0,
         today_balance: 0,
         total_money: 0
-      },
-      username: 'jsss'
+      }
     };
     return _this;
   }
@@ -89,6 +88,7 @@ var AccountPageComponent = function (_React$Component) {
   _createClass(AccountPageComponent, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
+      var self = this;
       _jquery2.default.ajax({
         method: 'POST',
         url: 'http://121.201.68.143/account/get_account_money/',
@@ -97,7 +97,11 @@ var AccountPageComponent = function (_React$Component) {
           username: (0, _jquery2.default)('#app').attr('data-username')
         }
       }).done(function (data) {
+        //let data_obj = JSON.parse(data);
         console.log(data);
+        self.setState({
+          info: data[0]
+        });
       });
     }
   }, {
@@ -123,7 +127,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                this.state.info.total_money
+                '5000000'
               )
             ),
             _react2.default.createElement(
@@ -133,7 +137,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                this.state.info.available_money
+                '5000000'
               )
             ),
             _react2.default.createElement(
@@ -143,7 +147,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                this.state.info.available_money_ratio
+                '100%'
               )
             )
           ),
@@ -157,7 +161,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                this.state.info.today_balance
+                '0'
               )
             ),
             _react2.default.createElement(
@@ -167,7 +171,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                this.state.info.realized_balance
+                '0'
               )
             ),
             _react2.default.createElement(
@@ -177,7 +181,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                this.state.info.floating_balance
+                '0'
               )
             )
           )

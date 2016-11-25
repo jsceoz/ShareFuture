@@ -28,11 +28,11 @@ class AccountPageComponent extends React.Component {
         today_balance:0,
         total_money:0
       },
-      username:'jsss'
     }
   }
 
   componentDidMount() {
+    let self = this;
     $.ajax({
       method:'POST',
       url:'http://121.201.68.143/account/get_account_money/',
@@ -41,7 +41,11 @@ class AccountPageComponent extends React.Component {
         username:$('#app').attr('data-username')
       }
     }).done(function (data) {
-      console.log(data)
+      //let data_obj = JSON.parse(data);
+      console.log(data);
+      self.setState({
+        info:data[0]
+      })
     })
   }
 
@@ -54,14 +58,14 @@ class AccountPageComponent extends React.Component {
         />
         <Paper className="account-header-info-wrapper">
           <div className="account-header-list">
-            <li>总资产<p>{this.state.info.total_money}</p></li>
-            <li>可用保证金<p>{this.state.info.available_money}</p></li>
-            <li>可用保证金比率<p>{this.state.info.available_money_ratio}</p></li>
+            <li>总资产<p>5000000</p></li>
+            <li>可用保证金<p>5000000</p></li>
+            <li>可用保证金比率<p>100%</p></li>
           </div>
           <div className="account-header-list">
-            <li>当日盈亏<p>{this.state.info.today_balance}</p></li>
-            <li>实现盈亏<p>{this.state.info.realized_balance}</p></li>
-            <li>浮动盈亏<p>{this.state.info.floating_balance}</p></li>
+            <li>当日盈亏<p>0</p></li>
+            <li>实现盈亏<p>0</p></li>
+            <li>浮动盈亏<p>0</p></li>
           </div>
         </Paper>
         <Paper className="paper-menu">

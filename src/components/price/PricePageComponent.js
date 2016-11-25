@@ -24,7 +24,6 @@ class PricePageComponent extends React.Component {
         method:"GET",
         url:"http://121.201.68.143/data/get_instant/?contract="+getList[i],
       }).done(function (data) {
-        console.log(data[0]);
         data = JSON.parse(data);
         console.log(data.Data[0][0]);
         let oldList = self.state.list;

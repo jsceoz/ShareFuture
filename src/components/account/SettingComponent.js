@@ -115,37 +115,37 @@ class SettingComponent extends React.Component {
         />
         <div className="setting-text-wrapper">
         <TextField
-          floatingLabelText="Floating Label Text"
+          floatingLabelText="进攻型资金概率区间"
           value={this.state.proba_rad}
           onChange={this.handleproba_radChange.bind(this)}
         />
         <TextField
-          floatingLabelText="Floating Label Text"
+          floatingLabelText="普通型资金概率区间"
           value={this.state.proba_norm}
           onChange={this.handleproba_normChange.bind(this)}
         />
         <TextField
-          floatingLabelText="Floating Label Text"
+          floatingLabelText="防守型资金概率区间"
           value={this.state.proba_defe}
           onChange={this.handleproba_defeChange.bind(this)}
         />
         <TextField
-          floatingLabelText="Floating Label Text"
+          floatingLabelText="进攻型资金占总资金比重"
           value={this.state.rate_rad}
           onChange={this.handlerate_radChange.bind(this)}
         />
         <TextField
-          floatingLabelText="Floating Label Text"
+          floatingLabelText="普通型资金占总资金比重"
           value={this.state.rate_norm}
           onChange={this.handlerate_normChange.bind(this)}
         />
         <TextField
-          floatingLabelText="Floating Label Text"
+          floatingLabelText="用户最小期望收益"
           value={this.state.exp_low_value}
           onChange={this.handleexp_low_valueChange.bind(this)}
         />
         <TextField
-          floatingLabelText="Floating Label Text"
+          floatingLabelText="用户单笔承受最大损失"
           value={this.state.exp_max_value}
           onChange={this.handleexp_max_valueChange.bind(this)}
         />

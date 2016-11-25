@@ -168,37 +168,37 @@ var SettingComponent = function (_React$Component) {
           'div',
           { className: 'setting-text-wrapper' },
           _react2.default.createElement(_TextField2.default, {
-            floatingLabelText: 'Floating Label Text',
+            floatingLabelText: '\u8FDB\u653B\u578B\u8D44\u91D1\u6982\u7387\u533A\u95F4',
             value: this.state.proba_rad,
             onChange: this.handleproba_radChange.bind(this)
           }),
           _react2.default.createElement(_TextField2.default, {
-            floatingLabelText: 'Floating Label Text',
+            floatingLabelText: '\u666E\u901A\u578B\u8D44\u91D1\u6982\u7387\u533A\u95F4',
             value: this.state.proba_norm,
             onChange: this.handleproba_normChange.bind(this)
           }),
           _react2.default.createElement(_TextField2.default, {
-            floatingLabelText: 'Floating Label Text',
+            floatingLabelText: '\u9632\u5B88\u578B\u8D44\u91D1\u6982\u7387\u533A\u95F4',
             value: this.state.proba_defe,
             onChange: this.handleproba_defeChange.bind(this)
           }),
           _react2.default.createElement(_TextField2.default, {
-            floatingLabelText: 'Floating Label Text',
+            floatingLabelText: '\u8FDB\u653B\u578B\u8D44\u91D1\u5360\u603B\u8D44\u91D1\u6BD4\u91CD',
             value: this.state.rate_rad,
             onChange: this.handlerate_radChange.bind(this)
           }),
           _react2.default.createElement(_TextField2.default, {
-            floatingLabelText: 'Floating Label Text',
+            floatingLabelText: '\u666E\u901A\u578B\u8D44\u91D1\u5360\u603B\u8D44\u91D1\u6BD4\u91CD',
             value: this.state.rate_norm,
             onChange: this.handlerate_normChange.bind(this)
           }),
           _react2.default.createElement(_TextField2.default, {
-            floatingLabelText: 'Floating Label Text',
+            floatingLabelText: '\u7528\u6237\u6700\u5C0F\u671F\u671B\u6536\u76CA',
             value: this.state.exp_low_value,
             onChange: this.handleexp_low_valueChange.bind(this)
           }),
           _react2.default.createElement(_TextField2.default, {
-            floatingLabelText: 'Floating Label Text',
+            floatingLabelText: '\u7528\u6237\u5355\u7B14\u627F\u53D7\u6700\u5927\u635F\u5931',
             value: this.state.exp_max_value,
             onChange: this.handleexp_max_valueChange.bind(this)
           })

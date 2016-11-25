@@ -48,7 +48,8 @@ var PriceDetailComponent = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (PriceDetailComponent.__proto__ || Object.getPrototypeOf(PriceDetailComponent)).call(this, props));
 
     _this.state = {
-      history_list: []
+      history_list: [],
+      info: []
     };
     return _this;
   }
@@ -56,41 +57,77 @@ var PriceDetailComponent = function (_React$Component) {
   _createClass(PriceDetailComponent, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
+      var d, s;
+      d = new Date();
+      s = "2016-"; //取年份
+      s = s + (d.getMonth() + 1) + "-"; //取月份
+      s += d.getDate() + " "; //取日期
+      s += d.getHours() + ":"; //取小时
+      s += d.getMinutes() + ":"; //取分
+      s += d.getSeconds(); //取秒
+      console.log(s);
       var self = this;
       _jquery2.default.ajax({
         method: "GET",
-        url: "http://121.201.68.143/data/get_contract/?begin=20161118103543&end=20161118120000&contract=" + this.props.params.name
+        url: "http://121.201.68.143/data/get_contract/?begin=20161125093000&end=20161125150000&contract=" + this.props.params.name
       }).done(function (data) {
-        console.log(data);
-        for (var i = 0; i < data.length; i++) {
-          var list = self.state.history_list;
-          var item = [];
-          item[1] = data[i].price;
-          item[0] = data[i].time;
-          list.push(item);
-          self.setState({
-            history_list: list
+        _jquery2.default.ajax({
+          method: "GET",
+          url: "http://121.201.68.143/data/get_line/?contract=" + self.props.params.name
+        }).done(function (data_line) {
+          console.log(data_line);
+          for (var i = 0; i < data.length; i++) {
+            var list = self.state.history_list;
+            var item = [];
+            item[1] = data[i].price;
+            item[0] = data[i].time;
+            list.push(item);
+            self.setState({
+              history_list: list
+            });
+          }
+          var line_arr = data_line.split(",");
+          console.log(line_arr);
+          var myChart = echarts.init(document.getElementById('main'));
+          myChart.setOption({
+            tooltip: {},
+            xAxis: {
+              type: 'time'
+
+            },
+            yAxis: {
+              type: 'value',
+              scale: 'false'
+            },
+            series: [{
+              name: '历史走势',
+              type: 'line',
+              data: self.state.history_list,
+              sampling: 'average',
+              symbol: 'none'
+            }, {
+              name: '1',
+              type: 'line',
+              data: [['2016-11-25 09:30:00', line_arr[0]], [s, line_arr[0]]]
+
+            }, {
+              name: '2',
+              type: 'line',
+              data: [['2016-11-25 09:30:00', line_arr[1]], [s, line_arr[1]]]
+
+            }]
           });
-        }
-        var myChart = echarts.init(document.getElementById('main'));
-        myChart.setOption({
-          tooltip: {},
-          xAxis: {
-            type: 'time',
-            boundaryGap: ['20%', '20%']
-          },
-          yAxis: {
-            type: 'value',
-            min: 'dataMin',
-            max: 'dataMax'
-          },
-          series: [{
-            name: '历史走势',
-            type: 'line',
-            data: self.state.history_list,
-            sampling: 'average',
-            symbol: 'none'
-          }]
+        });
+      });
+
+      _jquery2.default.ajax({
+        method: "GET",
+        url: 'http://121.201.68.143/data/get_instant/?contract=' + this.props.params.name
+      }).done(function (data) {
+        data = JSON.parse(data);
+        console.log(data.Data[0][0]);
+        self.setState({
+          info: data.Data[0][0]
         });
       });
     }
@@ -107,95 +144,84 @@ var PriceDetailComponent = function (_React$Component) {
           showMenuIconButton: false
         }),
         _react2.default.createElement(
-          _Table.Table,
-          null,
+          'table',
+          { className: 'record-table-2' },
           _react2.default.createElement(
-            _Table.TableHeader,
-            {
-              displaySelectAll: false,
-              adjustForCheckbox: false
-            },
+            'tr',
+            { className: 'table-row-2' },
             _react2.default.createElement(
-              _Table.TableRow,
+              'th',
               null,
-              _react2.default.createElement(
-                _Table.TableHeaderColumn,
-                null,
-                '\u5408\u7EA6'
-              ),
-              _react2.default.createElement(
-                _Table.TableHeaderColumn,
-                null,
-                '\u9AD8'
-              ),
-              _react2.default.createElement(
-                _Table.TableHeaderColumn,
-                null,
-                '\u4F4E'
-              ),
-              _react2.default.createElement(
-                _Table.TableHeaderColumn,
-                null,
-                '\u5F00'
-              ),
-              _react2.default.createElement(
-                _Table.TableHeaderColumn,
-                null,
-                '\u6362'
-              ),
-              _react2.default.createElement(
-                _Table.TableHeaderColumn,
-                null,
-                '\u91CF'
-              ),
-              _react2.default.createElement(
-                _Table.TableHeaderColumn,
-                null,
-                '\u989D'
-              )
+              '\u5408\u7EA6'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              '\u9AD8'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              '\u4F4E'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              '\u5F00'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              '\u6362'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              '\u91CF'
+            ),
+            _react2.default.createElement(
+              'th',
+              null,
+              '\u989D'
             )
           ),
           _react2.default.createElement(
-            _Table.TableBody,
-            { displayRowCheckbox: false },
+            'tr',
+            { className: 'detail-tr' },
             _react2.default.createElement(
-              _Table.TableRow,
+              'td',
               null,
-              _react2.default.createElement(
-                _Table.TableRowColumn,
-                null,
-                'IF1611'
-              ),
-              _react2.default.createElement(
-                _Table.TableRowColumn,
-                null,
-                '0'
-              ),
-              _react2.default.createElement(
-                _Table.TableRowColumn,
-                null,
-                '0'
-              ),
-              _react2.default.createElement(
-                _Table.TableRowColumn,
-                null,
-                '0'
-              ),
-              _react2.default.createElement(
-                _Table.TableRowColumn,
-                null,
-                '0'
-              ),
-              _react2.default.createElement(
-                _Table.TableRowColumn,
-                null,
-                '0'
-              ),
-              _react2.default.createElement(
-                _Table.TableRowColumn,
-                null,
-                '0'
-              )
+              this.state.info[0]
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.info[2] / 1000
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.info[4] / 1000
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.info[3] / 1000
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.info[6]
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.info[5]
+            ),
+            _react2.default.createElement(
+              'td',
+              null,
+              this.state.info[7]
             )
           )
         ),

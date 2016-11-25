@@ -7,3 +7,22 @@
   height: 300px;
   margin: 0 auto;
 }
+.record-table-2 th {
+  font-weight: 400;
+  border-right: 1px solid #eee;
+}
+.record-table-2 {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-row-2 {
+  background: #eee;
+  height: 30px;
+  font-size: 0.9rem;
+}
+.detail-tr{
+  height: 30px;
+  line-height: 30px;
+  border-bottom: 1px solid #aaa;
+  font-size: 0.8rem;
+}
