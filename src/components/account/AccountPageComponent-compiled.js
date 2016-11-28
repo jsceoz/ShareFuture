@@ -50,6 +50,10 @@ var _Divider = require('material-ui/Divider');
 
 var _Divider2 = _interopRequireDefault(_Divider);
 
+var _Snackbar = require('material-ui/Snackbar');
+
+var _Snackbar2 = _interopRequireDefault(_Snackbar);
+
 var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
@@ -80,7 +84,8 @@ var AccountPageComponent = function (_React$Component) {
         realized_balance: 0,
         today_balance: 0,
         total_money: 0
-      }
+      },
+      open: false
     };
     return _this;
   }
@@ -102,6 +107,20 @@ var AccountPageComponent = function (_React$Component) {
         self.setState({
           info: data_obj
         });
+      });
+    }
+  }, {
+    key: 'handleReset',
+    value: function handleReset() {
+      this.setState({
+        open: true
+      });
+    }
+  }, {
+    key: 'handleRequestClose',
+    value: function handleRequestClose() {
+      this.setState({
+        open: false
       });
     }
   }, {
@@ -127,7 +146,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                '19855000'
+                this.state.info[0]
               )
             ),
             _react2.default.createElement(
@@ -137,7 +156,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                '19855000'
+                this.state.info[1]
               )
             ),
             _react2.default.createElement(
@@ -147,7 +166,7 @@ var AccountPageComponent = function (_React$Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                '100%'
+                this.state.info[2]
               )
             )
           ),
@@ -205,11 +224,15 @@ var AccountPageComponent = function (_React$Component) {
                 return window.location.href = '#/analysis/';
               } }),
             _react2.default.createElement(_Divider2.default, null),
-            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D26\u6237\u91CD\u7F6E', leftIcon: _react2.default.createElement(_settingsBackupRestore2.default, null), onClick: function onClick() {
-                return window.location.href = '#/reset/';
-              } })
+            _react2.default.createElement(_MenuItem2.default, { primaryText: '\u8D26\u6237\u91CD\u7F6E', leftIcon: _react2.default.createElement(_settingsBackupRestore2.default, null), onClick: this.handleReset.bind(this) })
           )
         ),
+        _react2.default.createElement(_Snackbar2.default, {
+          open: this.state.open,
+          message: '\u8D26\u6237\u91CD\u7F6E\u6210\u529F',
+          autoHideDuration: 1000,
+          onRequestClose: this.handleRequestClose.bind(this)
+        }),
         _react2.default.createElement(_FooterComponent2.default, { index: 3 })
       );
     }

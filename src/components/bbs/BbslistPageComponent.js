@@ -50,7 +50,10 @@ class BbslistPageComponent extends React.Component {
             </div>
           ))}
         </List>
-        <FloatingActionButton className="btn-add-post">
+        <FloatingActionButton
+          className="btn-add-post"
+          onClick={() => window.location.href="#/create"}
+        >
           <ContentAdd />
         </FloatingActionButton>
         <Footer index={0}/>

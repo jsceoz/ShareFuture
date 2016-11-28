@@ -85,6 +85,7 @@ var NewsDetailComponent = function (_React$Component) {
           { className: 'news-detail-p' },
           this.state.newsItem.content
         ),
+        _react2.default.createElement('div', { className: 'placeholder' }),
         _react2.default.createElement(_FooterComponent2.default, { index: 1 })
       );
     }

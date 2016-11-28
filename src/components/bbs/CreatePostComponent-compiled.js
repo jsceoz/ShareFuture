@@ -26,6 +26,10 @@ var _RaisedButton = require('material-ui/RaisedButton');
 
 var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
+var _Snackbar = require('material-ui/Snackbar');
+
+var _Snackbar2 = _interopRequireDefault(_Snackbar);
+
 var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
@@ -50,7 +54,8 @@ var CreatePostComponent = function (_React$Component) {
 
     _this.state = {
       title: '',
-      content: ''
+      content: '',
+      open: false
     };
     return _this;
   }
@@ -82,6 +87,16 @@ var CreatePostComponent = function (_React$Component) {
           token: (0, _jquery2.default)('#app').attr('data-token'),
           username: (0, _jquery2.default)('#app').attr('data-username')
         }
+      });
+      this.setState({
+        open: true
+      });
+    }
+  }, {
+    key: 'handleRequestClose',
+    value: function handleRequestClose() {
+      this.setState({
+        open: false
       });
     }
   }, {
@@ -117,7 +132,13 @@ var CreatePostComponent = function (_React$Component) {
             fullWidth: true,
             onClick: this.handleSubmit.bind(this)
           })
-        )
+        ),
+        _react2.default.createElement(_Snackbar2.default, {
+          open: this.state.open,
+          message: '\u53D1\u8868\u6210\u529F',
+          autoHideDuration: 1000,
+          onRequestClose: this.handleRequestClose
+        })
       );
     }
   }]);

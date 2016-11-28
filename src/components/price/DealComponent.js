@@ -6,6 +6,7 @@ import Footer from '../public/FooterComponent'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton'
 import {RadioButton, RadioButtonGroup} from 'material-ui/RadioButton';
+import Snackbar from 'material-ui/Snackbar';
 import $ from 'jquery'
 
 require('styles/price/Deal.css');
@@ -16,7 +17,8 @@ class DealComponent extends React.Component {
     this.state = {
       contract:"",
       price:"",
-      num:''
+      num:'',
+      open:false
     }
   }
 
@@ -26,6 +28,11 @@ class DealComponent extends React.Component {
     })
   }
 
+  handleSubmit() {
+    this.setState({
+      open:true
+    })
+  }
 
   handleOpenBuy() {
     let self = this;
@@ -121,37 +128,43 @@ class DealComponent extends React.Component {
         /><br />
         <TextField
           hintText="价格"
-          onChange={this.handlePriceChange.bind(this)}
+          onChange={this.handleSubmit.bind(this)}
         /><br />
         <TextField
           hintText="数量"
-          onChange={this.handleNumChange.bind(this)}
+          onChange={this.handleSubmit.bind(this)}
         />
         </div>
         <RaisedButton
           className="deal-submit-btn"
           label="买入开仓"
           primary={true}
-          onClick={this.handleOpenBuy.bind(this)}
+          onClick={this.handleSubmit.bind(this)}
         />
           <RaisedButton
             className="deal-submit-btn"
             label="卖出开仓"
             primary={true}
-            onClick={this.handleOpenSell.bind(this)}
+            onClick={this.handleSubmit.bind(this)}
           />
           <RaisedButton
             className="deal-submit-btn"
             label="买入平仓"
             primary={true}
-            onClick={this.handleCloseBuy.bind(this)}
+            onClick={this.handleSubmit.bind(this)}
           />
           <RaisedButton
             className="deal-submit-btn"
             label="卖出平仓"
             primary={true}
-            onClick={this.handleCloseSell.bind(this)}
+            onClick={this.handleSubmit.bind(this)}
           />
+        <Snackbar
+          open={this.state.open}
+          message="当前休市，无法交易"
+          autoHideDuration={1000}
+          onRequestClose={this.handleRequestClose}
+        />
         <Footer index={2}/>
       </div>
     );

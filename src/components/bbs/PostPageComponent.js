@@ -45,6 +45,7 @@ class PostPageComponent extends React.Component {
   }
 
   commentSubmit() {
+    let self = this;
     $.ajax({
       method:"POST",
       url:"http://121.201.68.143/bbs/addconment/",
@@ -56,8 +57,19 @@ class PostPageComponent extends React.Component {
         token:$('#app').attr('data-token')
       }
     }).done(function (data) {
-      console.log(data)
-    })
+      console.log(data);
+      $.ajax({
+        method:"GET",
+        url:"http://121.201.68.143/bbs/showarticle/?id="+self.props.params.id
+      }).done(function (data) {
+        console.log(data);
+        self.setState({
+          title:data.article.title,
+          content:data.article.content,
+          comment:data.comment,
+        })
+      })
+    });
   }
 
   render() {
@@ -93,6 +105,7 @@ class PostPageComponent extends React.Component {
             onClick={this.commentSubmit.bind(this)}
           />
         </div>
+        <div className="placeholder"></div>
         <Footer index={0}/>
       </div>
     );

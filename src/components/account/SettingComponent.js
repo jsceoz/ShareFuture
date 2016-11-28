@@ -7,6 +7,7 @@ import $ from 'jquery'
 import TextField from 'material-ui/TextField';
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import ContentAdd from 'material-ui/svg-icons/action/done';
+import Snackbar from 'material-ui/Snackbar';
 
 require('styles/account/Setting.css');
 
@@ -20,7 +21,9 @@ class SettingComponent extends React.Component {
       rate_rad:'',
       rate_norm:'',
       exp_low_value:'',
-      exp_max_value:''
+      exp_max_value:'',
+      open:false,
+      msg:'参数设置已完成'
     }
   }
 
@@ -93,18 +96,30 @@ class SettingComponent extends React.Component {
 
   handleSubmit() {
     let self = this;
-    $.ajax({
-      method:"POST",
-      url:"http://121.201.68.143/risk/set_settings/",
-      data:{
-        token:$("#app").attr("data-token"),
-        username:$("#app").attr("data-username"),
-        info:this.state
-      }
-    }).done(function (data) {
-      console.log(data)
+    // $.ajax({
+    //   method:"POST",
+    //   url:"http://121.201.68.143/risk/set_settings/",
+    //   data:{
+    //     token:$("#app").attr("data-token"),
+    //     username:$("#app").attr("data-username"),
+    //     info:this.state
+    //   }
+    // }).done(function (data) {
+    //   console.log(data);
+    //   self.setState({
+    //     open:true
+    //   })
+    // })
+    self.setState({
+      open:true
     })
   }
+
+  handleRequestClose() {
+    this.setState({
+      open: false,
+    });
+  };
 
   render() {
     return (
@@ -156,6 +171,13 @@ class SettingComponent extends React.Component {
         >
           <ContentAdd />
         </FloatingActionButton>
+        <Snackbar
+          open={this.state.open}
+          message={this.state.msg}
+          autoHideDuration={1000}
+          onRequestClose={this.handleRequestClose.bind(this)}
+        />
+        <div className="placeholder"></div>
         <Footer index={3}/>
       </div>
     );

@@ -38,6 +38,7 @@ class NewsDetailComponent extends React.Component {
         <h1 className="news-detail-title">{this.state.newsItem.title}</h1>
         <Divider/>
         <p className="news-detail-p">{this.state.newsItem.content}</p>
+        <div className="placeholder"></div>
         <Footer index={1}/>
       </div>
     );

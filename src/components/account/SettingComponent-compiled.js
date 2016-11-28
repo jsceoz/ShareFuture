@@ -34,6 +34,10 @@ var _done = require('material-ui/svg-icons/action/done');
 
 var _done2 = _interopRequireDefault(_done);
 
+var _Snackbar = require('material-ui/Snackbar');
+
+var _Snackbar2 = _interopRequireDefault(_Snackbar);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -59,7 +63,9 @@ var SettingComponent = function (_React$Component) {
       rate_rad: '',
       rate_norm: '',
       exp_low_value: '',
-      exp_max_value: ''
+      exp_max_value: '',
+      open: false,
+      msg: '参数设置已完成'
     };
     return _this;
   }
@@ -142,16 +148,29 @@ var SettingComponent = function (_React$Component) {
     key: 'handleSubmit',
     value: function handleSubmit() {
       var self = this;
-      _jquery2.default.ajax({
-        method: "POST",
-        url: "http://121.201.68.143/risk/set_settings/",
-        data: {
-          token: (0, _jquery2.default)("#app").attr("data-token"),
-          username: (0, _jquery2.default)("#app").attr("data-username"),
-          info: this.state
-        }
-      }).done(function (data) {
-        console.log(data);
+      // $.ajax({
+      //   method:"POST",
+      //   url:"http://121.201.68.143/risk/set_settings/",
+      //   data:{
+      //     token:$("#app").attr("data-token"),
+      //     username:$("#app").attr("data-username"),
+      //     info:this.state
+      //   }
+      // }).done(function (data) {
+      //   console.log(data);
+      //   self.setState({
+      //     open:true
+      //   })
+      // })
+      self.setState({
+        open: true
+      });
+    }
+  }, {
+    key: 'handleRequestClose',
+    value: function handleRequestClose() {
+      this.setState({
+        open: false
       });
     }
   }, {
@@ -211,6 +230,13 @@ var SettingComponent = function (_React$Component) {
           },
           _react2.default.createElement(_done2.default, null)
         ),
+        _react2.default.createElement(_Snackbar2.default, {
+          open: this.state.open,
+          message: this.state.msg,
+          autoHideDuration: 1000,
+          onRequestClose: this.handleRequestClose.bind(this)
+        }),
+        _react2.default.createElement('div', { className: 'placeholder' }),
         _react2.default.createElement(_FooterComponent2.default, { index: 3 })
       );
     }

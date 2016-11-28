@@ -100,6 +100,7 @@ var NewsPageComponent = function (_React$Component) {
             );
           })
         ),
+        _react2.default.createElement('div', { className: 'placeholder' }),
         _react2.default.createElement(_FooterComponent2.default, { index: 1 })
       );
     }

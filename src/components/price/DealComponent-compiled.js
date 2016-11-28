@@ -28,6 +28,10 @@ var _RaisedButton2 = _interopRequireDefault(_RaisedButton);
 
 var _RadioButton = require('material-ui/RadioButton');
 
+var _Snackbar = require('material-ui/Snackbar');
+
+var _Snackbar2 = _interopRequireDefault(_Snackbar);
+
 var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
@@ -53,7 +57,8 @@ var DealComponent = function (_React$Component) {
     _this.state = {
       contract: "",
       price: "",
-      num: ''
+      num: '',
+      open: false
     };
     return _this;
   }
@@ -63,6 +68,13 @@ var DealComponent = function (_React$Component) {
     value: function componentDidMount() {
       this.setState({
         contract: this.props.params.name
+      });
+    }
+  }, {
+    key: 'handleSubmit',
+    value: function handleSubmit() {
+      this.setState({
+        open: true
       });
     }
   }, {
@@ -172,37 +184,43 @@ var DealComponent = function (_React$Component) {
           _react2.default.createElement('br', null),
           _react2.default.createElement(_TextField2.default, {
             hintText: '\u4EF7\u683C',
-            onChange: this.handlePriceChange.bind(this)
+            onChange: this.handleSubmit.bind(this)
           }),
           _react2.default.createElement('br', null),
           _react2.default.createElement(_TextField2.default, {
             hintText: '\u6570\u91CF',
-            onChange: this.handleNumChange.bind(this)
+            onChange: this.handleSubmit.bind(this)
           })
         ),
         _react2.default.createElement(_RaisedButton2.default, {
           className: 'deal-submit-btn',
           label: '\u4E70\u5165\u5F00\u4ED3',
           primary: true,
-          onClick: this.handleOpenBuy.bind(this)
+          onClick: this.handleSubmit.bind(this)
         }),
         _react2.default.createElement(_RaisedButton2.default, {
           className: 'deal-submit-btn',
           label: '\u5356\u51FA\u5F00\u4ED3',
           primary: true,
-          onClick: this.handleOpenSell.bind(this)
+          onClick: this.handleSubmit.bind(this)
         }),
         _react2.default.createElement(_RaisedButton2.default, {
           className: 'deal-submit-btn',
           label: '\u4E70\u5165\u5E73\u4ED3',
           primary: true,
-          onClick: this.handleCloseBuy.bind(this)
+          onClick: this.handleSubmit.bind(this)
         }),
         _react2.default.createElement(_RaisedButton2.default, {
           className: 'deal-submit-btn',
           label: '\u5356\u51FA\u5E73\u4ED3',
           primary: true,
-          onClick: this.handleCloseSell.bind(this)
+          onClick: this.handleSubmit.bind(this)
+        }),
+        _react2.default.createElement(_Snackbar2.default, {
+          open: this.state.open,
+          message: '\u5F53\u524D\u4F11\u5E02\uFF0C\u65E0\u6CD5\u4EA4\u6613',
+          autoHideDuration: 1000,
+          onRequestClose: this.handleRequestClose
         }),
         _react2.default.createElement(_FooterComponent2.default, { index: 2 })
       );

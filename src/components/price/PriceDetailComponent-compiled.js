@@ -88,6 +88,11 @@ var PriceDetailComponent = function (_React$Component) {
           }
           var line_arr = data_line.split(",");
           console.log(line_arr);
+          var l2 = parseInt(line_arr[0]);
+          var l3 = parseInt(line_arr[1]);
+          var l1 = l2 + 25;
+          var l4 = l3 - 25;
+          var len = self.state.history_list.length;
           var myChart = echarts.init(document.getElementById('main'));
           myChart.setOption({
             grid: {
@@ -98,7 +103,9 @@ var PriceDetailComponent = function (_React$Component) {
               type: 'value',
               axisLabel: {
                 show: false
-              }
+              },
+              min: 0,
+              max: 'dataMax'
             },
             yAxis: {
               type: 'value',
@@ -110,30 +117,36 @@ var PriceDetailComponent = function (_React$Component) {
               data: self.state.history_list,
               sampling: 'average',
               symbol: 'none'
-            }
-            // {
-            //   name: '1',
-            //   type: 'line',
-            //   data: [['2016-11-25 09:30:00',line_arr[0]], [s,line_arr[0]]]
-            //
-            // },
-            // {
-            //   name: '2',
-            //   type: 'line',
-            //   data: [['2016-11-25 09:30:00',line_arr[1]], [s,line_arr[1]]]
-            //
-            // },
-            // {
-            //   name: '3',
-            //   type: 'line',
-            //   data: [['2016-11-25 09:30:00',line_arr[0]+25], [s,line_arr[0]+25]]
-            // },
-            // {
-            //   name: '4',
-            //   type: 'line',
-            //   data: [['2016-11-25 09:30:00',line_arr[1]-20], [s,line_arr[1]-20]]
-            // },
-            ]
+            }, {
+              name: '1',
+              type: 'line',
+              data: [[0, l2], [len, l2]]
+
+            }, {
+              name: '2',
+              type: 'line',
+              data: [[0, l3], [len, l3]]
+            }, {
+              name: '3',
+              type: 'line',
+              data: [[0, l1], [len, l1]],
+              symbol: 'none',
+              lineStyle: {
+                normal: {
+                  type: 'dotted'
+                }
+              }
+            }, {
+              name: '4',
+              type: 'line',
+              data: [[0, l4], [len, l4]],
+              symbol: 'none',
+              lineStyle: {
+                normal: {
+                  type: 'dotted'
+                }
+              }
+            }]
           });
         });
       });
@@ -190,7 +203,7 @@ var PriceDetailComponent = function (_React$Component) {
             _react2.default.createElement(
               'th',
               null,
-              '\u6362'
+              '\u6700\u65B0'
             ),
             _react2.default.createElement(
               'th',
@@ -229,7 +242,7 @@ var PriceDetailComponent = function (_React$Component) {
             _react2.default.createElement(
               'td',
               null,
-              this.state.info[6]
+              this.state.info[1] / 1000
             ),
             _react2.default.createElement(
               'td',
@@ -244,6 +257,21 @@ var PriceDetailComponent = function (_React$Component) {
           )
         ),
         _react2.default.createElement('div', { id: 'main' }),
+        _react2.default.createElement(
+          'p',
+          { className: 'time-1' },
+          '9:30'
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'time-2' },
+          '11:30'
+        ),
+        _react2.default.createElement(
+          'p',
+          { className: 'time-3' },
+          '15:00'
+        ),
         _react2.default.createElement(_FlatButton2.default, {
           label: '\u4EA4\u6613',
           primary: true,

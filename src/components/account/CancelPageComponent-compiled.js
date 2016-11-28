@@ -81,7 +81,10 @@ var CancelPageComponent = function (_React$Component) {
           null,
           _react2.default.createElement(
             _Table.TableHeader,
-            null,
+            {
+              displaySelectAll: false,
+              adjustForCheckbox: false
+            },
             _react2.default.createElement(
               _Table.TableRow,
               null,

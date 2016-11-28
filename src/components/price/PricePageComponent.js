@@ -18,7 +18,7 @@ class PricePageComponent extends React.Component {
 
   componentDidMount() {
     let self = this;
-    let getList = ['IF1612', 'IF1701', 'IF1703', 'IF1706', 'IH1612', 'IH1701', 'IH1703', 'IH1706', 'IC1612', 'IC1701', 'IC1703', 'IC1706']
+    let getList = ['IF1612', 'IF1701', 'IF1703', 'IF1706', 'IH1612', 'IH1701', 'IH1703', 'IH1706', 'IC1612', 'IC1701', 'IC1703', 'IC1706'];
     for (let i = 0; i < getList.length; i++){
       $.ajax({
         method:"GET",
@@ -61,11 +61,11 @@ class PricePageComponent extends React.Component {
           </TableHeader>
           <TableBody displayRowCheckbox={false}>
             {this.state.list.map((item) => (
-              <div className="price-row" onClick={() => window.location.href="#/pde/IF1612"}>
-                <a>{item[0]}</a>
-                <a>{item[1]/1000}</a>
-                <a>{item[8]/1000}</a>
-                <a>{item[9]/1000}</a>
+              <div className="price-row" onClick={() => window.location.href="#/price-detail/"+item[0]}>
+                <a className="p-a-1">{item[0]}</a>
+                <a className="p-a-2">{item[1]/1000}</a>
+                <a className="p-a-3">{item[8]/1000}</a>
+                <a className="p-a-4">{item[9]/1000}</a>
               </div>
             ))}
           </TableBody>

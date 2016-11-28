@@ -42,7 +42,10 @@ class CancelPageComponent extends React.Component {
           showMenuIconButton={false}
         />
         <Table>
-          <TableHeader>
+          <TableHeader
+            displaySelectAll={false}
+            adjustForCheckbox={false}
+          >
             <TableRow>
               <TableHeaderColumn>合约</TableHeaderColumn>
               <TableHeaderColumn>数量</TableHeaderColumn>

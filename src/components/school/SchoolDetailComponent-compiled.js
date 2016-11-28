@@ -80,12 +80,9 @@ var SchoolDetailComponent = function (_React$Component) {
           this.state.item.title
         ),
         _react2.default.createElement(_Divider2.default, null),
-        _react2.default.createElement(
-          'p',
-          { className: 'news-detail-p' },
-          this.state.item.content
-        ),
-        _react2.default.createElement(_FooterComponent2.default, { index: 1 })
+        _react2.default.createElement('div', { className: 'news-detail-p', dangerouslySetInnerHTML: { __html: this.state.item.content } }),
+        _react2.default.createElement('div', { className: 'placeholder' }),
+        _react2.default.createElement(_FooterComponent2.default, { index: 0 })
       );
     }
   }]);

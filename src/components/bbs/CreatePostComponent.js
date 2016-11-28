@@ -5,6 +5,7 @@ import AppBar from 'material-ui/AppBar'
 import Footer from '../public/FooterComponent'
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import Snackbar from 'material-ui/Snackbar';
 import $ from 'jquery'
 
 require('styles/bbs/CreatePost.css');
@@ -14,7 +15,8 @@ class CreatePostComponent extends React.Component {
     super(props);
     this.state = {
       title:'',
-      content:''
+      content:'',
+      open:false
     }
   }
 
@@ -41,8 +43,17 @@ class CreatePostComponent extends React.Component {
         token:$('#app').attr('data-token'),
         username:$('#app').attr('data-username')
       }
+    });
+    this.setState({
+      open:true
     })
   }
+
+  handleRequestClose() {
+    this.setState({
+      open: false,
+    });
+  };
 
   render() {
     return (
@@ -73,6 +84,12 @@ class CreatePostComponent extends React.Component {
             onClick={this.handleSubmit.bind(this)}
           />
         </div>
+        <Snackbar
+          open={this.state.open}
+          message="发表成功"
+          autoHideDuration={1000}
+          onRequestClose={this.handleRequestClose}
+        />
       </div>
     );
   }

@@ -55,6 +55,7 @@ class NewsPageComponent extends React.Component {
             </div>
           ))}
         </List>
+        <div className="placeholder"></div>
         <Footer index={1} />
       </div>
     );

@@ -93,6 +93,7 @@ var PostPageComponent = function (_React$Component) {
   }, {
     key: 'commentSubmit',
     value: function commentSubmit() {
+      var self = this;
       _jquery2.default.ajax({
         method: "POST",
         url: "http://121.201.68.143/bbs/addconment/",
@@ -105,6 +106,17 @@ var PostPageComponent = function (_React$Component) {
         }
       }).done(function (data) {
         console.log(data);
+        _jquery2.default.ajax({
+          method: "GET",
+          url: "http://121.201.68.143/bbs/showarticle/?id=" + self.props.params.id
+        }).done(function (data) {
+          console.log(data);
+          self.setState({
+            title: data.article.title,
+            content: data.article.content,
+            comment: data.comment
+          });
+        });
       });
     }
   }, {
@@ -159,6 +171,7 @@ var PostPageComponent = function (_React$Component) {
             onClick: this.commentSubmit.bind(this)
           })
         ),
+        _react2.default.createElement('div', { className: 'placeholder' }),
         _react2.default.createElement(_FooterComponent2.default, { index: 0 })
       );
     }

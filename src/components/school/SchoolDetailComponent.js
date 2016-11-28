@@ -38,8 +38,9 @@ class SchoolDetailComponent extends React.Component {
         />
         <h1 className="news-detail-title">{this.state.item.title}</h1>
         <Divider/>
-        <p className="news-detail-p">{this.state.item.content}</p>
-        <Footer index={1}/>
+        <div className="news-detail-p" dangerouslySetInnerHTML={{__html: this.state.item.content}}></div>
+        <div className="placeholder"></div>
+        <Footer index={0}/>
       </div>
     );
   }

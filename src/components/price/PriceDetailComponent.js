@@ -51,6 +51,11 @@ class PriceDetailComponent extends React.Component {
         }
         let line_arr = data_line.split(",");
         console.log(line_arr);
+        let l2 = parseInt(line_arr[0]);
+        let l3 = parseInt(line_arr[1]);
+        let l1 = l2+25;
+        let l4 = l3-25;
+        let len = self.state.history_list.length;
         var myChart = echarts.init(document.getElementById('main'));
         myChart.setOption({
           grid:{
@@ -61,7 +66,9 @@ class PriceDetailComponent extends React.Component {
             type: 'value',
             axisLabel: {
               show:false
-            }
+            },
+            min:0,
+            max:'dataMax'
           },
           yAxis: {
             type: 'value',
@@ -73,29 +80,40 @@ class PriceDetailComponent extends React.Component {
             data:self.state.history_list,
             sampling: 'average',
             symbol: 'none'
-          }
-            // {
-            //   name: '1',
-            //   type: 'line',
-            //   data: [['2016-11-25 09:30:00',line_arr[0]], [s,line_arr[0]]]
-            //
-            // },
-            // {
-            //   name: '2',
-            //   type: 'line',
-            //   data: [['2016-11-25 09:30:00',line_arr[1]], [s,line_arr[1]]]
-            //
-            // },
-            // {
-            //   name: '3',
-            //   type: 'line',
-            //   data: [['2016-11-25 09:30:00',line_arr[0]+25], [s,line_arr[0]+25]]
-            // },
-            // {
-            //   name: '4',
-            //   type: 'line',
-            //   data: [['2016-11-25 09:30:00',line_arr[1]-20], [s,line_arr[1]-20]]
-            // },
+          },
+            {
+              name: '1',
+              type: 'line',
+              data: [[0,l2], [len,l2]]
+
+            },
+            {
+              name: '2',
+              type: 'line',
+              data: [[0,l3], [len,l3]]
+            },
+            {
+              name: '3',
+              type: 'line',
+              data: [[0,l1], [len,l1]],
+              symbol: 'none',
+              lineStyle:{
+                normal:{
+                  type:'dotted'
+                }
+              }
+            },
+            {
+              name: '4',
+              type: 'line',
+              data: [[0,l4], [len,l4]],
+              symbol: 'none',
+              lineStyle:{
+                normal:{
+                  type:'dotted'
+                }
+              }
+            },
           ]
         });
       });
@@ -129,7 +147,7 @@ class PriceDetailComponent extends React.Component {
               <th>高</th>
               <th>低</th>
               <th>开</th>
-              <th>换</th>
+              <th>最新</th>
               <th>量</th>
               <th>额</th>
             </tr>
@@ -138,17 +156,21 @@ class PriceDetailComponent extends React.Component {
                 <td>{this.state.info[2]/1000}</td>
                 <td>{this.state.info[4]/1000}</td>
                 <td>{this.state.info[3]/1000}</td>
-                <td>{this.state.info[6]}</td>
+                <td>{this.state.info[1]/1000}</td>
                 <td>{this.state.info[5]}</td>
                 <td>{this.state.info[7]}</td>
               </tr>
         </table>
         <div id="main"></div>
+        <p className="time-1">9:30</p>
+        <p className="time-2">11:30</p>
+        <p className="time-3">15:00</p>
         <FlatButton
           label="交易"
           primary={true}
           onClick={() => window.location.href="#/deal/"+this.props.params.name}
         />
+
         <Footer index={2}/>
       </div>
 

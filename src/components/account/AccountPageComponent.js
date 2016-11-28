@@ -11,6 +11,7 @@ import Description from 'material-ui/svg-icons/action/description'
 import BackUp from 'material-ui/svg-icons/action/settings-backup-restore'
 import Footer from '../public/FooterComponent'
 import Divider from 'material-ui/Divider'
+import Snackbar from 'material-ui/Snackbar';
 import $ from 'jquery'
 
 require('styles/account/AccountPage.css');
@@ -28,6 +29,7 @@ class AccountPageComponent extends React.Component {
         today_balance:0,
         total_money:0
       },
+      open:false
     }
   }
 
@@ -49,6 +51,18 @@ class AccountPageComponent extends React.Component {
     })
   }
 
+  handleReset() {
+    this.setState({
+      open:true
+    })
+  }
+
+  handleRequestClose() {
+    this.setState({
+      open: false,
+    });
+  };
+
   render() {
     return (
       <div className='accountpage-component'>
@@ -58,9 +72,9 @@ class AccountPageComponent extends React.Component {
         />
         <Paper className="account-header-info-wrapper">
           <div className="account-header-list">
-            <li>总资产<p>19855000</p></li>
-            <li>可用保证金<p>19855000</p></li>
-            <li>可用保证金比率<p>100%</p></li>
+            <li>总资产<p>{this.state.info[0]}</p></li>
+            <li>可用保证金<p>{this.state.info[1]}</p></li>
+            <li>可用保证金比率<p>{this.state.info[2]}</p></li>
           </div>
           <div className="account-header-list">
             <li>当日盈亏<p>{this.state.info[3]}</p></li>
@@ -77,9 +91,15 @@ class AccountPageComponent extends React.Component {
             <Divider/>
             <MenuItem primaryText="资产分析" leftIcon={<Description/>} onClick={() =>　window.location.href='#/analysis/'}/>
             <Divider/>
-            <MenuItem primaryText="账户重置" leftIcon={<BackUp/>} onClick={() =>　window.location.href='#/reset/'}/>
+            <MenuItem primaryText="账户重置" leftIcon={<BackUp/>} onClick={this.handleReset.bind(this)}/>
           </Menu>
         </Paper>
+        <Snackbar
+          open={this.state.open}
+          message="账户重置成功"
+          autoHideDuration={1000}
+          onRequestClose={this.handleRequestClose.bind(this)}
+        />
         <Footer index={3} />
       </div>
     );

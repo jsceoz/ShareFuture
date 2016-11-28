@@ -103,7 +103,12 @@ var BbslistPageComponent = function (_React$Component) {
         ),
         _react2.default.createElement(
           _FloatingActionButton2.default,
-          { className: 'btn-add-post' },
+          {
+            className: 'btn-add-post',
+            onClick: function onClick() {
+              return window.location.href = "#/create";
+            }
+          },
           _react2.default.createElement(_create2.default, null)
         ),
         _react2.default.createElement(_FooterComponent2.default, { index: 0 })

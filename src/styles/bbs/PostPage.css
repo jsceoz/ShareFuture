@@ -10,9 +10,10 @@
 }
 .post-comment-text-wrapper {
   width: 80%;
-  position: absolute;
+  position: fixed;
   bottom: 30px;
   left: 30px;
+  background: #fff;
 }
 .comment-input {
   width: 100px;
