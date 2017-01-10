@@ -68,6 +68,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 require('styles/account/AccountPage.css');
 
+//account info wrapper component
+
 var AccountPageComponent = function (_React$Component) {
   _inherits(AccountPageComponent, _React$Component);
 
@@ -94,6 +96,8 @@ var AccountPageComponent = function (_React$Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       var self = this;
+
+      //get initial info
       _jquery2.default.ajax({
         method: 'POST',
         url: 'http://121.201.68.143/account/get_account_money/',
