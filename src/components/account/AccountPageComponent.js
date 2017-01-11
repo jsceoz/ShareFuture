@@ -16,7 +16,6 @@ import $ from 'jquery'
 
 require('styles/account/AccountPage.css');
 
-//account info wrapper component
 class AccountPageComponent extends React.Component {
   constructor(props) {
     super(props);
@@ -36,7 +35,6 @@ class AccountPageComponent extends React.Component {
   componentDidMount() {
     let self = this;
 
-    //get initial info
     $.ajax({
       method:'POST',
       url:'http://121.201.68.143/account/get_account_money/',
@@ -51,6 +49,7 @@ class AccountPageComponent extends React.Component {
         info:data_obj
       })
     })
+
   }
 
   handleReset() {
